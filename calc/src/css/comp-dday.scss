@@ -18,38 +18,123 @@ section.dday {
       background-image: url(../assets/img/timer-icon-bg.gif);
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: center 30%;
+      background-position: center;
       mix-blend-mode: overlay;
       opacity: 0.8;
       filter: grayscale(1) brightness(50%);
     } //before
-    p.now {
-    }
-    ul {
+ 
+    >ul {
       flex: 1 0 1px; //flex :1; -> flex-grow:1 남은 넓이를 1가져라, flex-shrink:1  부모보다 커지지 않는다,감소하다, flex-basis:auto 기본 넓이
       overflow: auto;
       margin: 15px 0;
-    }
-    .btn-add {
-      width: 100%;
-      padding: 10px 0;
-      outline: none;
-      box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
-      img {
-        display: inline-block;
-        width: 30px;
-        margin-right: 10px;
-        vertical-align: middle;
-        mix-blend-mode: multiply;
-        filter: grayscale(0.5) brightness(150%);
+      >li{
+        padding: 15px 0;
+        border-bottom: 2px groove rgba(#FFF, 0.5); 
+        div.meta{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          h3{
+            max-width: 60%;
+            font-size: 1.1em;
+            font-weight: 600;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          p{
+            time{
+              display: block;
+              text-align: center;
+              font-size: 0.8em;
+              small, em{
+                margin: 0 2px;
+              }
+              small{
+                font-size: 0.8em;
+                font-weight: 900;
+                text-transform: uppercase;
+              }
+            }
+          }
+        } //div.meta
+        >ul.timer-output{
+          display: flex;
+          margin-top: 7px;
+          >li{
+            flex: 1;
+            padding: 5px;
+            figure{
+              position: relative;
+              margin-bottom: 7px;
+              svg{
+                width: 100%;
+                transform: rotate(-90deg);
+                circle{
+                  fill: none; 
+                  transition: stroke-dashoffset 0.3s; //나중에 확인 필요
+                  &:nth-child(1){
+                    stroke-width: 2;
+                    stroke: #FFF;
+                  }
+                  &:nth-child(2){
+                    stroke-width: 6;
+                    stroke: #FFF;
+                  }
+                }
+              }
+              figcaption{
+                @include m.posLT(absolute,50%,50%,-50%,-50%);
+                font-size: 1.5em;
+                font-weight: 900;
+              }
+            } //figure
+
+            p{
+              text-align: center;
+              font-size: 0.8em;
+              em{
+                display: block;
+                font-weight: 600;
+                text-transform: uppercase;
+              }
+              small{
+
+              }
+            }
+          }
+        }
       }
-      &:focus {
-        background: rgba(#fff, 0.1);
-      }
-      &:active {
-        box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
-      } //button:active
     }
+    .no-msg{
+      @include m.posLT(absolute,50%,50%,-50%,-50%);
+      width: 90%;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+  }
+
+  .btn-add {
+    width: 100%;
+    padding: 10px 0;
+    outline: none;
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+    img {
+      display: inline-block;
+      width: 30px;
+      margin-right: 10px;
+      vertical-align: middle;
+      mix-blend-mode: multiply;
+      filter: grayscale(0.5) brightness(150%);
+    }
+    &:focus {
+      background: rgba(#fff, 0.1);
+    }
+    &:active {
+      box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    } //button:active
   }
 
   form.dday-add {
