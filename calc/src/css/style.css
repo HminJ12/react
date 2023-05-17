@@ -90,8 +90,8 @@ body #root {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: min(95%, 400px);
-  height: min(95%, 600px);
+  width: min(95%, 500px);
+  height: min(95%, 800px);
   overflow: hidden;
   overflow-y: auto;
   box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
