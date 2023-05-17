@@ -1,0 +1,22 @@
+====================
+라우터 설치(집에서도 똑같이 하기)
+
+터미널에서 + 누르기
+
+npm i react-router-dom 쓰기(설치)
+
+cmd 휴지통에 버리기
+
+모듈설치 후 에러 나오면 ctrl+c 눌러서 npm 종료 했다 다시 켜거나 vs code 껐다 켜기 하면 됨(모듈 설치하면 종종 에러 나올 때가 있다)
+
+uninstall하려면
+npm uninstall react-router-dom 
+
+npm uni react-router-dom 
+(app을 reset해서 충돌방지를 위해 삭제 후 다시 설치한다)
+
+설치 후 package.json에 react-router-dom이 있으면 설치가 제대로 된 거다!
+=====================
+프로젝트할 때 새로 설치
+create-react-app .
+

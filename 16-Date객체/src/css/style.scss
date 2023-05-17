@@ -1,0 +1,46 @@
+body{
+  background: #EEE;
+}
+.clock{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #FFF;
+  .pin{
+    position: absolute;
+    bottom: 50%;
+    transform-origin: center bottom;
+  }
+  .hour{
+    width: 16px;
+    height: 70px;
+    left: calc(50% - 8px);
+    background: orange;
+  }
+  .min{
+    width: 10px;
+    height: 100px;
+    left: calc(50% - 5px);
+    background: rgb(205, 50, 102);
+  }
+  .sec{
+    width: 4px;
+    height: 130px;
+    left: calc(50% - 2px);
+    background: #000;
+  }
+  .digital{
+    position: fixed;
+    left: calc(50% - 30px);
+    top: 15%;
+  }
+  .year{
+    position: fixed;
+    left: calc(50% - 45px);
+    bottom: 15%;
+  }
+}

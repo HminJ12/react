@@ -1,0 +1,114 @@
+section.dday {
+  display: flex;
+  flex-direction: column;
+}
+section.dday article.dday-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+section.dday article.dday-list::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/img/timer-icon-bg.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 30%;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+  filter: grayscale(1) brightness(50%);
+}
+section.dday article.dday-list ul {
+  flex: 1 0 1px;
+  overflow: auto;
+  margin: 15px 0;
+}
+section.dday article.dday-list .btn-add {
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.dday article.dday-list .btn-add img {
+  display: inline-block;
+  width: 30px;
+  margin-right: 10px;
+  vertical-align: middle;
+  mix-blend-mode: multiply;
+  filter: grayscale(0.5) brightness(150%);
+}
+section.dday article.dday-list .btn-add:focus {
+  background: rgba(255, 255, 255, 0.1);
+}
+section.dday article.dday-list .btn-add:active {
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.dday form.dday-add {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+section.dday form.dday-add p {
+  padding: 15px 0;
+  border-top: 2px groove rgba(255, 255, 255, 0.5);
+}
+section.dday form.dday-add p label {
+  display: block;
+  margin-bottom: 10px;
+}
+section.dday form.dday-add p input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  outline: none;
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.dday form.dday-add p input:focus {
+  background: rgba(255, 255, 255, 0.8);
+}
+section.dday form.dday-add p input::placeholder {
+  color: inherit;
+}
+section.dday form.dday-add p input::-webkit-calendar-picker-indicator {
+  filter: invert(10%);
+  mix-blend-mode: color-burn;
+}
+section.dday form.dday-add button {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 15px;
+  outline: none;
+  box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.dday form.dday-add button:focus {
+  background: rgba(255, 255, 255, 0.1);
+}
+section.dday form.dday-add button:active {
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.dday div.now {
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  color: #FFF;
+}
+section.dday div.now time {
+  display: block;
+}
+section.dday div.now time b, section.dday div.now time small {
+  margin: 0 3px;
+}
+section.dday div.now time small {
+  font-size: 0.6em;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.7;
+}/*# sourceMappingURL=comp-dday.css.map */

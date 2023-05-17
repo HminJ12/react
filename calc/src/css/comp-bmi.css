@@ -1,0 +1,168 @@
+@charset "UTF-8";
+section.bmi {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+section.bmi form div.radios p {
+  position: relative;
+  display: flex;
+}
+section.bmi form div.radios p input {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  border: none;
+  background: none;
+  /* display: none; 리액트에서 하면 안 된다 required속성을 못 찾기 때문에 접근을 못한다, 경고메세지 발생함 */
+}
+section.bmi form div.radios p input:checked + label {
+  font-weight: 600;
+  text-shadow: 1px 1px 1px rgb(255, 255, 255), -1px -1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.bmi form div.radios p label {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.bmi form div.radios p label:first-of-type {
+  border-radius: 30px 0 0 30px;
+}
+section.bmi form div.radios p label:last-of-type {
+  border-radius: 0 30px 30px 0;
+}
+section.bmi form > div {
+  padding: 15px 0;
+  border-bottom: 2px groove rgba(0, 0, 0, 0.1);
+}
+section.bmi form > div > label {
+  display: block;
+  margin-bottom: 10px;
+}
+section.bmi form > div input[type=number] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  outline: none;
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.bmi form > div input[type=number]:focus {
+  background: rgba(255, 255, 255, 0.8);
+}
+section.bmi form > div input[type=number]::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+section.bmi form button {
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.bmi form button:focus {
+  background: rgba(255, 255, 255, 0.2);
+}
+section.bmi form button:active {
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.bmi div.bmi-result {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s;
+}
+section.bmi div.bmi-result.active {
+  left: 0;
+}
+section.bmi div.bmi-result .output {
+  position: relative;
+  height: 75%;
+  margin-bottom: 30px;
+  border: 1px solid #EEE;
+}
+section.bmi div.bmi-result .output.result {
+  background: #FFF;
+}
+section.bmi div.bmi-result .output.result p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  font-weight: 600;
+  opacity: 0.5;
+}
+section.bmi div.bmi-result .output.err {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+section.bmi div.bmi-result .output.err p {
+  position: relative;
+  margin: 20px 0;
+  color: #FFF;
+}
+section.bmi div.bmi-result .output.err p i {
+  font-size: 8em;
+  color: rgba(255, 255, 255, 0.5);
+}
+section.bmi div.bmi-result .output.err p i:last-child {
+  font-size: 15em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+section.bmi div.bmi-result .output svg.morph {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+}
+section.bmi div.bmi-result .output svg.morph .org {
+  fill: #8FACCA;
+}
+section.bmi div.bmi-result .output .board {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  opacity: 0.8;
+}
+section.bmi div.bmi-result .output .board .pin {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  width: 30%;
+  transform-origin: 93% center;
+  transition: transform 1s;
+  transition-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+section.bmi div.bmi-result button {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #FFF;
+  box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.bmi div.bmi-result button:active {
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=comp-bmi.css.map */
