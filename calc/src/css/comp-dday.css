@@ -28,8 +28,13 @@ section.dday article.dday-list > ul {
   margin: 15px 0;
 }
 section.dday article.dday-list > ul > li {
-  padding: 15px 0;
+  cursor: pointer;
+  padding: 15px 10px;
+  border-radius: 10px;
   border-bottom: 2px groove rgba(255, 255, 255, 0.5);
+}
+section.dday article.dday-list > ul > li.active {
+  background: rgba(255, 0, 0, 0.3);
 }
 section.dday article.dday-list > ul > li div.meta {
   display: flex;
@@ -164,6 +169,17 @@ section.dday form.dday-add p input::placeholder {
 section.dday form.dday-add p input::-webkit-calendar-picker-indicator {
   filter: invert(10%);
   mix-blend-mode: color-burn;
+}
+section.dday form.dday-add .fa-arrow-left {
+  font-size: 1.5em;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+section.dday form.dday-add .fa-arrow-left:active {
+  transform: scale(1.2);
 }
 section.dday form.dday-add button {
   width: 100%;

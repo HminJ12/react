@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { fnGetDateInfo, fnTimer } from '../../js/dday';
+import React, { useContext, useEffect, useState } from 'react';
+import { fnDDayArrInit, fnGetDateInfo, fnTimer } from '../../js/dday';
+import { DDayContext } from './CompDDay';
+
 
 
 const CompListItem = ({ item }) => {
+
+  const {_ddayArr, _setDdayArr, _ddayOutputArr, _setDdayOutputArr} = useContext(DDayContext)
   const [_remainDays, _setRemainDays] = useState(0)
   const [_remainHours, _setRemainHours] = useState(0)
   const [_remainMinutes, _setRemainMinutes] = useState(0)
@@ -13,8 +17,11 @@ const CompListItem = ({ item }) => {
   const [_stroke3,_setStroke3] = useState(60)
   const [_stroke4,_setStroke4] = useState(60)
 
-  //item은 props로 내려받은 객체를 구조분해 {id, title,dday}
-  const { title, dday } = item
+  const [_isActive, _setIsActive] = useState('')
+
+
+  //item은 props로 내려받은 객체를 구조분해 {id, title, dday}
+  const { id, title, dday } = item
   const { day, year, month, date, ap, hour, min, sec, timeStamp } = fnGetDateInfo(dday)
 
   const fnTimerSetState = function () {
@@ -29,6 +36,24 @@ const CompListItem = ({ item }) => {
     _setStroke4(remainSecs)
   }
 
+  const fnMouseDownHandler = function(){
+    _setIsActive('active')
+
+  }
+
+  const fnDelHandler = function(){
+    if(window.confirm('DDay목록을 삭제하시겠습니까?')){
+      const ddayArr = _ddayArr.filter(v => v.id !== id)
+      _setDdayArr(ddayArr)
+      _setDdayOutputArr(ddayArr)
+      localStorage.setItem('ddayArrStorage',JSON.stringify(ddayArr)) //_ddayArr로 저장은 불가능하다 set은 다음 화면에 바뀐다는 의미이다
+      //삭제하려면 무조건 배열을 바꿔야 한다
+      //원본을 복제 .filter , 여기서는 _ddayArr를 filter 하면 이미 새로운 배열이 나오기 때문에 복제를 할 필요가 없다
+    }else{
+      _setIsActive('')
+    }
+  }
+
   useEffect(() => {
     fnTimerSetState()
     let intervalID
@@ -41,7 +66,7 @@ const CompListItem = ({ item }) => {
   }, [])
 
   return (
-    <li>
+    <li className={_isActive} onMouseDown={fnMouseDownHandler} onClick={fnDelHandler}>
       <div className='meta'>
         <h3>{title}</h3>
         <p>

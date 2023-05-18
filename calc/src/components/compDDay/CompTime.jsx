@@ -16,7 +16,14 @@ const CompTime = () => {
   const [_sec, _setSec] = useState()
 
   const fnSetState = function (){
-    const { day, year, month, date, ap, hour, min, sec } = fnGetDateInfo(new Date())
+    const now = new Date()
+    const nowYear = now.getFullYear()
+    const nowMonth = now.getMonth() + 1
+    const nowDate = now.getDate()
+    const nowHour = now.getHours()
+    const nowMin = now.getMinutes()
+    const nowSec = now.getSeconds()
+    const { day, year, month, date, ap, hour, min, sec } = fnGetDateInfo(now)
     _setDay(day)
     _setYear(year)
     _setMonth(month)

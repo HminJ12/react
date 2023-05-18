@@ -29,7 +29,12 @@ section.dday {
       overflow: auto;
       margin: 15px 0;
       >li{
-        padding: 15px 0;
+        &.active{
+          background: rgba(red, 0.3);
+        }
+        cursor: pointer;
+        padding: 15px 10px;
+        border-radius: 10px;
         border-bottom: 2px groove rgba(#FFF, 0.5); 
         div.meta{
           display: flex;
@@ -167,6 +172,18 @@ section.dday {
           filter: invert(10%);
           mix-blend-mode: color-burn;
         }
+      }
+    }
+
+    .fa-arrow-left{
+      font-size: 1.5em;
+      display: block;
+      margin: 0 auto;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:active{
+        transform: scale(1.2);
       }
     }
 
