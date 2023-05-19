@@ -18,6 +18,7 @@ const CompListItem = ({ item }) => {
   const [_stroke4,_setStroke4] = useState(60)
 
   const [_isActive, _setIsActive] = useState('')
+  const [_isDeActive, _setIsDeActive] = useState('')
 
 
   //item은 props로 내려받은 객체를 구조분해 {id, title, dday}
@@ -26,6 +27,7 @@ const CompListItem = ({ item }) => {
 
   const fnTimerSetState = function () {
     let { remainDays, remainHours, remainMinutes, remainSecs } = fnTimer(timeStamp)
+    if(!remainDays && !remainHours && !remainMinutes && !remainSecs) _setIsDeActive('deactive')
     _setRemainDays(remainDays)
     _setRemainHours(remainHours)
     _setRemainMinutes(remainMinutes)
@@ -66,7 +68,7 @@ const CompListItem = ({ item }) => {
   }, [])
 
   return (
-    <li className={_isActive} onMouseDown={fnMouseDownHandler} onClick={fnDelHandler}>
+    <li className={_isActive+' '+_isDeActive} onMouseDown={fnMouseDownHandler} onClick={fnDelHandler}>
       <div className='meta'>
         <h3>{title}</h3>
         <p>

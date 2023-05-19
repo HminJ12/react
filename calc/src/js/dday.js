@@ -59,5 +59,10 @@ export const fnTimer = function(ddayTimeStamp){
   remain = parseInt(remain % (60*60))
   let remainMinutes = parseInt(remain / 60)
   let remainSecs = parseInt(remain % 60)
+
+  if(diffTimeStamp < 0){
+    remainDays=0; remainHours=0; remainMinutes=0; remainSecs=0
+  } //음수가 나오지 않도록 강제로 고정
+
   return {remainDays, remainHours, remainMinutes, remainSecs}
 }

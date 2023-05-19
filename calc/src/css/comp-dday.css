@@ -36,6 +36,9 @@ section.dday article.dday-list > ul > li {
 section.dday article.dday-list > ul > li.active {
   background: rgba(255, 0, 0, 0.3);
 }
+section.dday article.dday-list > ul > li.deactive {
+  background: rgba(0, 0, 0, 0.5);
+}
 section.dday article.dday-list > ul > li div.meta {
   display: flex;
   align-items: center;
@@ -128,8 +131,8 @@ section.dday .btn-add img {
   width: 30px;
   margin-right: 10px;
   vertical-align: middle;
-  mix-blend-mode: multiply;
-  filter: grayscale(0.5) brightness(150%);
+  mix-blend-mode: overlay;
+  filter: grayscale(1);
 }
 section.dday .btn-add:focus {
   background: rgba(255, 255, 255, 0.1);

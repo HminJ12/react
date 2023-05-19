@@ -2,12 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fnGetTheme } from '../../js/compMenu';
 import { AppContext } from '../../App';
+import CompCoatchMark from './CompCoatchMark';
 
-
+const fnSetShowCoatch = function(){
+  return (window.localStorage.getItem('localCoatch')? false : true)
+}
 
 const CompMenu = () => {
   const {_theme, _setTheme} = useContext(AppContext)
   const [_key, _setKey] = useState(1)
+
+  const [_showCoatch, _setShowCoatch] = useState(fnSetShowCoatch())
 
   const fnChangeHandler = function(e){
     let n = e.target.value
@@ -58,6 +63,8 @@ const CompMenu = () => {
         <Link to="/bmi"><i className="fa-solid fa-weight-scale"></i>bmi</Link>
         <Link to="/dday"><i className="fa-solid fa-calendar-days"></i>dday</Link>
       </nav>
+
+      {(_showCoatch) && <CompCoatchMark _setShowCoatch={_setShowCoatch}/>}
     </section>
   );
 };

@@ -32,6 +32,9 @@ section.dday {
         &.active{
           background: rgba(red, 0.3);
         }
+        &.deactive{
+          background: rgba(#000, 0.5);
+        }
         cursor: pointer;
         padding: 15px 10px;
         border-radius: 10px;
@@ -131,8 +134,8 @@ section.dday {
       width: 30px;
       margin-right: 10px;
       vertical-align: middle;
-      mix-blend-mode: multiply;
-      filter: grayscale(0.5) brightness(150%);
+      mix-blend-mode: overlay; //multiple
+      filter: grayscale(1); //brightness(150%)
     }
     &:focus {
       background: rgba(#fff, 0.1);
