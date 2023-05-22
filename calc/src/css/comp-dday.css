@@ -3,6 +3,7 @@ section.dday {
   flex-direction: column;
 }
 section.dday article.dday-list {
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,6 +22,85 @@ section.dday article.dday-list::before {
   mix-blend-mode: overlay;
   opacity: 0.8;
   filter: grayscale(1) brightness(50%);
+}
+section.dday article.dday-list .filter-btn {
+  z-index: 1;
+  position: absolute;
+  left: calc(50% - 20px);
+  border-radius: 0 0 5px 5px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  transition: all 0.3s;
+}
+section.dday article.dday-list .filter-btn:hover {
+  font-size: 1.5em;
+}
+section.dday article.dday-list .filter-btn i:last-child {
+  display: none;
+}
+section.dday article.dday-list .filter-btn.active {
+  color: #fff;
+}
+section.dday article.dday-list .filter-btn.active i:first-child {
+  display: none;
+}
+section.dday article.dday-list .filter-btn.active i:last-child {
+  display: block;
+}
+section.dday article.dday-list .filter-form {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(-100%);
+  transition: transform 1s;
+}
+section.dday article.dday-list .filter-form.active {
+  transform: translateY(0%);
+}
+section.dday article.dday-list .filter-form fieldset {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+section.dday article.dday-list .filter-form fieldset legend {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border-radius: 5px;
+}
+section.dday article.dday-list .filter-form fieldset button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 0;
+  outline: none;
+  box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
+  background: #FFF;
+}
+section.dday article.dday-list .filter-form fieldset button:active {
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.dday article.dday-list .filter-form fieldset input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: none;
+  outline: none;
+  box-shadow: inset -2px -2px 5px rgb(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+section.dday article.dday-list .filter-form fieldset input:focus {
+  background: #000;
+  color: #FFF;
 }
 section.dday article.dday-list > ul {
   flex: 1 0 1px;
@@ -57,7 +137,8 @@ section.dday article.dday-list > ul > li div.meta p time {
   text-align: center;
   font-size: 0.8em;
 }
-section.dday article.dday-list > ul > li div.meta p time small, section.dday article.dday-list > ul > li div.meta p time em {
+section.dday article.dday-list > ul > li div.meta p time small,
+section.dday article.dday-list > ul > li div.meta p time em {
   margin: 0 2px;
 }
 section.dday article.dday-list > ul > li div.meta p time small {
@@ -87,11 +168,11 @@ section.dday article.dday-list > ul > li > ul.timer-output > li figure svg circl
 }
 section.dday article.dday-list > ul > li > ul.timer-output > li figure svg circle:nth-child(1) {
   stroke-width: 2;
-  stroke: #FFF;
+  stroke: #fff;
 }
 section.dday article.dday-list > ul > li > ul.timer-output > li figure svg circle:nth-child(2) {
   stroke-width: 6;
-  stroke: #FFF;
+  stroke: #fff;
 }
 section.dday article.dday-list > ul > li > ul.timer-output > li figure figcaption {
   position: absolute;
@@ -202,12 +283,13 @@ section.dday div.now {
   padding: 10px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
-  color: #FFF;
+  color: #fff;
 }
 section.dday div.now time {
   display: block;
 }
-section.dday div.now time b, section.dday div.now time small {
+section.dday div.now time b,
+section.dday div.now time small {
   margin: 0 3px;
 }
 section.dday div.now time small {
