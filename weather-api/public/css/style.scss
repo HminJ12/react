@@ -1,0 +1,132 @@
+@use './mixin' as m;
+
+html {
+  --sky: #8ed1f1;
+  --color: #4378a3;
+}
+
+body {
+  color: var(--color);
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  height: 100vh;
+  background-color: var(--sky);
+  &::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/main/weather-icos.gif);
+    background-size: 1000px;
+    opacity: 0.3;
+    animation: bg 5000s linear infinite;
+    @keyframes bg{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -50000px -50000px;
+      }
+    }
+  }
+}
+
+h1{
+  perspective: 700px;
+  position: absolute;
+  width: min(40%, 200px);
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  img{
+    width: 100%;
+    opacity: 0.5;
+    animation: rotate 10s infinite;
+  }
+  @keyframes rotate {
+    0%{
+      transform: rotateX(0deg);
+    }
+    50%{
+      transform: rotateX(360deg);
+    }
+    100%{
+      transform: rotateX(360deg);
+    }
+  }
+}
+
+#root{
+  @include m.posLT(absolute,50%,50%,-50%,-48%);
+  width: min(95%, 1000px);
+  height: min(85%, 800px);
+  box-sizing: border-box;
+  padding: 10px;
+  background: rgba(#FFF, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(#FFF,0.7);
+  animation: grow 1.5s infinite alternate linear;
+  @keyframes grow {
+    0%{
+      box-shadow: 0 0 5px 0px rgba(#FFF, 0.3);
+    }
+    100%{
+      box-shadow: 0 0 15px 5px rgba(#FFF, 0.7);
+    }
+  }
+  .app-inner{
+    height: 100%;
+    @media screen and (min-width:900px){
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+    @media screen and (max-width:900px){
+      overflow: hidden;
+      overflow-y: auto;
+    }
+    section{
+      box-sizing: border-box;
+      padding: 10px;
+      @media screen and (min-width:900px){
+        width: 50%;
+        height: 50%;
+      }
+      @media screen and (max-width:900px){
+        margin: 20px 0;
+      }
+      .section-inner{
+        @media screen and (min-width:900px){
+          height: 100%;
+          overflow: auto;
+        }
+      }
+    }
+  }
+  
+}
+
+.app-inner, .section-inner{
+  @media (hover: hover) {
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+      background-color: #f5f5f5;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color);
+    }
+  } //media hover
+}
+
+
