@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="%PUBLIC_URL%/css/reset.css">
-    <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css">
+
+    <script>
+      window.fnNull = () => {} //아무것도 아닌 함수
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=%REACT_APP_GOOGLE_KEY%&callback=fnNull"></script>
     <script src="https://kit.fontawesome.com/eef58f469c.js" crossorigin="anonymous"></script>
     <title>React App</title>
   </head>
   <body>
-    <h1><img src="%PUBLIC_URL%/img/main/title.png" alt=""></h1>
     <div id="root"></div>
   </body>
 </html>

@@ -1,0 +1,15 @@
+@use './mixin' as m;
+
+.comp-map{
+  .section-inner{
+    @media screen and (max-width:900px) {
+      height: 500px;
+    }
+    #map{
+      filter: hue-rotate(40deg) brightness(105%);
+      height: 100%;
+      border-radius: 10px;
+      
+    }
+  }
+}

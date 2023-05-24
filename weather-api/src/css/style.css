@@ -1,0 +1,228 @@
+html {
+  --sky: #8ed1f1;
+  --color: #4378a3;
+}
+
+body {
+  color: var(--color);
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--sky);
+}
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/img/weather-icos.gif);
+  background-size: 1000px;
+  opacity: 0.3;
+  animation: bg 5000s linear infinite;
+}
+@keyframes bg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -50000px -50000px;
+  }
+}
+
+h1 {
+  perspective: 700px;
+  position: absolute;
+  width: min(40%, 200px);
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+h1 img {
+  width: 100%;
+  opacity: 0.5;
+  animation: rotate 10s infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(360deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+#root {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -48%);
+  width: min(95%, 1100px);
+  height: min(90%, 800px);
+  box-sizing: border-box;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: grow 1.5s infinite alternate linear;
+}
+@media screen and (min-width: 900px) {
+  #root {
+    min-height: 760px;
+  }
+}
+@keyframes grow {
+  0% {
+    box-shadow: 0 0 5px 0px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  }
+}
+#root .app-inner {
+  height: 100%;
+}
+@media screen and (min-width: 900px) {
+  #root .app-inner {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 900px) {
+  #root .app-inner {
+    overflow: hidden;
+    overflow-y: auto;
+  }
+}
+#root .app-inner section {
+  box-sizing: border-box;
+}
+@media screen and (min-width: 900px) {
+  #root .app-inner section {
+    width: 50%;
+    height: 50%;
+  }
+}
+@media screen and (max-width: 900px) {
+  #root .app-inner section {
+    margin: 20px 0;
+  }
+}
+#root .app-inner section .section-inner {
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+}
+@media screen and (min-width: 900px) {
+  #root .app-inner section .section-inner {
+    height: 100%;
+    overflow: auto;
+  }
+}
+#root .app-inner section .section-inner .preloader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sky);
+}
+
+@media (hover: hover) {
+  .app-inner::-webkit-scrollbar-track, .section-inner::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  .app-inner::-webkit-scrollbar, .section-inner::-webkit-scrollbar, body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #f5f5f5;
+  }
+  .app-inner::-webkit-scrollbar-thumb, .section-inner::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+    background-color: var(--color);
+  }
+}
+
+/* spinner */
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+}
+
+.loader {
+  color: #FFF;
+  font-size: 11px;
+  text-indent: -99999em;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  transform: scale(0.5) translateZ(0);
+}
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: "";
+}
+
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: var(--sky);
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.1em 5.1em;
+  transform-origin: 5.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: var(--sky);
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 4.9em;
+  -webkit-transform-origin: 0.1em 5.1em;
+  transform-origin: 0.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=style.css.map */

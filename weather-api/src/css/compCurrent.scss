@@ -1,0 +1,48 @@
+@use './mixin' as m;
+
+section.comp-current{
+  @media screen and (max-width:900px) {
+    margin-top: 50px !important;
+  } //max 900
+
+  .section-inner{
+    .current-output{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      color: #FFF;
+      @media screen and (min-width:900px) {
+        height: 100%;
+      } //min 900
+      @media screen and (max-width:900px) {
+        padding: 10px;
+      } //min 900
+      address{
+        margin-bottom: 10px;
+      }
+      .circle-container{
+        position: relative;
+        width: min(85%, 300px);
+        border-radius: 50%;
+        background: rgba(#000, 0.2);
+        @include m.square;
+        .circle-inner{
+          @include m.posLT(absolute,50%,50%,-50%,-50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 90%;
+          height: 90%;
+          border-radius: 50%;
+          background: blue;
+          
+        }
+      }
+    }
+  }
+}

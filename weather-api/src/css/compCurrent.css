@@ -1,0 +1,53 @@
+@media screen and (max-width: 900px) {
+  section.comp-current {
+    margin-top: 50px !important;
+  }
+}
+section.comp-current .section-inner .current-output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  color: #FFF;
+}
+@media screen and (min-width: 900px) {
+  section.comp-current .section-inner .current-output {
+    height: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  section.comp-current .section-inner .current-output {
+    padding: 10px;
+  }
+}
+section.comp-current .section-inner .current-output address {
+  margin-bottom: 10px;
+}
+section.comp-current .section-inner .current-output .circle-container {
+  position: relative;
+  width: min(85%, 300px);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+}
+section.comp-current .section-inner .current-output .circle-container::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: blue;
+}/*# sourceMappingURL=compCurrent.css.map */
