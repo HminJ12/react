@@ -101,11 +101,14 @@ export const fnInitMap = function(latLngObj, fn){
   let marker = new window.google.maps.Marker({position: center, map: map});
  
   map.addListener('click', async (e) => {
-    let lat = e.latLng.lat()
-    let lng = e.latLng.lng()
-    marker.setPosition({lat,lng}) //클릭했을 때 마커가 변하는 거
-    fn(1)
-    console.log(`클릭한 위경도 ${lat} ${lng}`);
+    const result = window.confirm('해당위치로 날씨정보를 갱신하시겠습니까?')
+    if(result){
+      let lat = e.latLng.lat()
+      let lng = e.latLng.lng()
+      marker.setPosition({lat,lng}) //클릭했을 때 마커가 변하는 거
+      fn({lat,lng}) //클릭한 위치의 위경도를 받아서 주소와 날씨정보 갱신
+    }
+
   })//click
 } //간단하게 하려면 컴포넌트를 만들어서 사용하면 된다
 
@@ -116,9 +119,9 @@ export const fnGetAddress = function(latLngObj){
         let address
         geocoder.geocode({ 'location': latLngObj }, function (results, status) {
           try{ 
-            address = results[3].formatted_address 
+            address = `[${results[3].formatted_address}] [${results[0].formatted_address}]`
           }catch{ //formatted_address정보가 없을 경우 예외처리
-            address = "해당 위치의 주소는 존재하지 않습니다"
+            address = `"해당 위치의 주소는 존재하지 않습니다, 정상적인 위치인지 확인 후 다시 검색해주세요"`
           }
           resolve(address)
         }); //시간이 걸림, 주소를 받아오고나서 할 일, 주소를 리턴해준다

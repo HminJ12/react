@@ -1,3 +1,5 @@
+import { codeEnArr, codeKrArr } from "./conditionCode"
+
 export const fnGetWeatherData = function(latLngObj){
   return new Promise((resolve)=>{
     const {lat, lng} = latLngObj
@@ -15,5 +17,58 @@ export const fnGetWeatherData = function(latLngObj){
 //날씨 정보를 가공해서 리턴하는 함수
 export const fnSetWeatherInfo = function(weatherDataObj){
   let temp = (weatherDataObj.temp - 273.15).toFixed(1)
-  return {temp}
+  let sunriseHours =  new Date(weatherDataObj.sunrise * 1000).getHours() //초가 나옴, 날짜가 만들어진다
+  let sunriseApm = (sunriseHours <= 12)? 'AM' : 'PM' //hour보다 apm을 먼저 해야한다
+  sunriseHours = (sunriseHours > 12)? sunriseHours - 12 : sunriseHours
+  sunriseHours = (sunriseHours < 10)? '0' + sunriseHours : sunriseHours
+  let sunriseMinutes = new Date(weatherDataObj.sunrise * 1000).getMinutes()
+  sunriseMinutes = (sunriseMinutes < 10 )? '0' + sunriseMinutes : sunriseMinutes
+
+
+  let sunsetHours = new Date(weatherDataObj.sunset * 1000).getHours()
+  let sunsetApm = (sunsetHours <= 12)? 'AM' : 'PM'
+  sunsetHours = (sunsetHours > 12)? sunsetHours - 12 : sunsetHours
+  sunsetHours = (sunsetHours < 10)? '0' + sunsetHours : sunsetHours
+  let sunsetMinutes = new Date(weatherDataObj.sunrise * 1000).getMinutes()
+  sunsetMinutes = (sunsetMinutes < 10 )? '0' + sunsetMinutes : sunsetMinutes
+
+  let icon = weatherDataObj.weather[0].icon
+  let bg = weatherDataObj.weather[0].main
+  let desc = weatherDataObj.weather[0].description
+  desc = codeKrArr[codeEnArr.indexOf(desc)] 
+  let windDeg = weatherDataObj.wind_deg
+  let windSpeed = weatherDataObj.wind_speed
+
+  let humidity = weatherDataObj.humidity
+  let rain = (weatherDataObj.rain)? weatherDataObj.rain['1h'] : 0
+  let uvi = weatherDataObj.uvi
+  let uviDesc  
+  if(uvi <= 3) uviDesc = '낮음'
+  else if(uvi > 3 && uvi <= 6) uviDesc = '보통'
+  else if(uvi > 6 && uvi <= 8) uviDesc = '높음'
+  else if(uvi > 8 && uvi <= 11) uviDesc = '매우높음'
+  else uviDesc = '위험'
+  
+  let dtDate = new Date(weatherDataObj.dt * 1000)
+
+  let hour = dtDate.getHours()
+  let apm = (hour <= 12)? '오전' : '오후'
+  hour = (hour >= 12)? hour - 12 : hour
+  hour = (hour < 10)? '0' + hour : hour 
+  let min = dtDate.getMinutes()
+  min = (min < 10)? '0' + min : min 
+  let year = dtDate.getFullYear()
+  let month = dtDate.getMonth() + 1
+  let date = dtDate.getDate()
+  let dayArr = ['일','월','화','수','목','금','토']
+  let day = dayArr[dtDate.getDay()]
+
+
+  return {
+    temp, 
+    sunriseHours,sunriseMinutes, sunriseApm, 
+    sunsetHours, sunsetMinutes, sunsetApm, 
+    icon, bg, desc, windDeg, windSpeed, humidity, rain, uvi, uviDesc,
+    hour, apm, min, year, month, date, day
+  }
 }

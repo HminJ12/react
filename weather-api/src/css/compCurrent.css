@@ -1,9 +1,10 @@
 @media screen and (max-width: 900px) {
   section.comp-current {
-    margin-top: 50px !important;
+    margin-top: 20px !important;
   }
 }
 section.comp-current .section-inner .current-output {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,11 +25,51 @@ section.comp-current .section-inner .current-output {
     padding: 10px;
   }
 }
+section.comp-current .section-inner .current-output button.reset {
+  z-index: 1;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 5%;
+  top: 15%;
+  font-size: 1.5em;
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+section.comp-current .section-inner .current-output button.reset:active, section.comp-current .section-inner .current-output button.reset:hover {
+  opacity: 1;
+  transform: rotate(180deg);
+}
 section.comp-current .section-inner .current-output address {
+  display: flex;
+  overflow: hidden;
   margin-bottom: 10px;
+  width: min(90%, 350px);
+  padding: 3px 10px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+section.comp-current .section-inner .current-output address span {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 100;
+  font-size: 1.2em;
+  animation: marquee 15s linear infinite;
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 section.comp-current .section-inner .current-output .circle-container {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: min(85%, 300px);
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.2);
@@ -38,16 +79,139 @@ section.comp-current .section-inner .current-output .circle-container::before {
   display: block;
   padding-top: 100%;
 }
-section.comp-current .section-inner .current-output .circle-container .circle-inner {
+section.comp-current .section-inner .current-output .circle-container .sunset {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  top: 0;
+}
+section.comp-current .section-inner .current-output .circle-container .sunset svg {
+  width: 100%;
+}
+section.comp-current .section-inner .current-output .circle-container .sunset svg .sun {
+  fill: rgb(255, 217, 0);
+  offset-path: path("M25,200c0-96.65,78.35-175,175-175s175,78.35,175,175");
+  animation: sun 10s linear infinite;
+  /* offset-distance: 50%; */
+}
+@keyframes sun {
+  0% {
+    transform: scale(0.6) rotate(0deg);
+  }
+  100% {
+    transform: scale(0.6) rotate(360deg);
+  }
+}
+section.comp-current .section-inner .current-output .circle-container .sunset svg .line {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 3px;
+}
+section.comp-current .section-inner .current-output .circle-container .sunset svg .dash {
+  fill: none;
+  stroke: rgb(255, 217, 0);
+  stroke-width: 6px;
+  stroke-dasharray: 1;
+  /* stroke-dashoffset: 1; */
+}
+section.comp-current .section-inner .current-output .circle-container .sunset time {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 0.85em;
+  background: rgb(255, 217, 0);
+  border-radius: 5px;
+}
+section.comp-current .section-inner .current-output .circle-container .sunset time small {
+  font-size: 0.8em;
+  font-weight: 600;
+  margin-right: 2px;
+}
+section.comp-current .section-inner .current-output .circle-container .sunset time.rise-time {
+  transform: translateX(-30%);
+}
+section.comp-current .section-inner .current-output .circle-container .sunset time.set-time {
+  float: right;
+  transform: translateX(30%);
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .temp {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90%;
-  height: 90%;
-  border-radius: 50%;
-  background: blue;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .temp em {
+  position: relative;
+  z-index: 1;
+  font-size: 3em;
+  margin-right: -60px;
+  text-shadow: 1px 1px 0 var(--color);
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .temp em sup {
+  font-size: 0.7em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .temp img {
+  width: 100px;
+  mask-image: url(../assets/img/mask.png);
+  mask-size: 100%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .temp span {
+  position: absolute;
+  transform: translate(70px, 13px);
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .temp span i {
+  margin-right: 3px;
+  font-size: 0.9em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .desc {
+  margin-top: -20px;
+  text-align: center;
+  font-size: 1.3em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .etc {
+  margin: 7px auto;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 70%;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .etc span {
+  display: inline-block;
+  margin: 2px 5px;
+  font-size: 0.9em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .etc span i {
+  margin-right: 3px;
+  font-size: 0.8em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .etc span i.fa-location-arrow {
+  margin-right: 7px;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .etc span small {
+  font-size: 0.8em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .time-date {
+  margin-top: -5px;
+  text-align: center;
+  color: #FFF;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .time-date time {
+  display: block;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .time-date time.time {
+  font-size: 1.3em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .time-date time.date {
+  font-size: 0.9em;
 }/*# sourceMappingURL=compCurrent.css.map */
