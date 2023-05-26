@@ -122,11 +122,6 @@ section.comp-current .section-inner .current-output .circle-container .sunset ti
   background: rgb(255, 217, 0);
   border-radius: 5px;
 }
-section.comp-current .section-inner .current-output .circle-container .sunset time small {
-  font-size: 0.8em;
-  font-weight: 600;
-  margin-right: 2px;
-}
 section.comp-current .section-inner .current-output .circle-container .sunset time.rise-time {
   transform: translateX(-30%);
 }
@@ -178,11 +173,11 @@ section.comp-current .section-inner .current-output .circle-container .circle-co
   font-size: 1.3em;
 }
 section.comp-current .section-inner .current-output .circle-container .circle-container-inner .etc {
-  margin: 7px auto;
+  margin: 5px auto;
   box-sizing: border-box;
   padding: 5px;
-  width: 70%;
-  border-radius: 5px;
+  width: 65%;
+  border-radius: 10px;
   background: rgba(0, 0, 0, 0.3);
   text-align: center;
 }
@@ -211,6 +206,9 @@ section.comp-current .section-inner .current-output .circle-container .circle-co
 }
 section.comp-current .section-inner .current-output .circle-container .circle-container-inner .time-date time.time {
   font-size: 1.3em;
+}
+section.comp-current .section-inner .current-output .circle-container .circle-container-inner .time-date time.time small {
+  font-size: 0.8em;
 }
 section.comp-current .section-inner .current-output .circle-container .circle-container-inner .time-date time.date {
   font-size: 0.9em;

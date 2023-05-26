@@ -6,11 +6,12 @@ import { fnGetWeatherData } from '../../js/weather';
 
 
 const CompMap = () => {
-  const {_latLng, _setWeatherData, _setAddress} = useContext(AppContext)
+  const {_latLng, _setWeatherData, _setAddress,} = useContext(AppContext)
 
   
   //fnInitMap의 파라미터로 전달되어서 클릭이벤트내에서 호출될 함수, 세팅은 여기서
   const fnMapClickHandler = async function(latLngObj){
+
     let address = await fnGetAddress(latLngObj) //주소를 반환해주는 함수
     _setAddress(address)
     const weatherData = await fnGetWeatherData(latLngObj)
@@ -25,7 +26,7 @@ const CompMap = () => {
     <section className='comp-map'>
       <div className='section-inner'>
         {
-          (_latLng)?  
+          (_latLng)?  //위경도가 출력되면
           <div id="map"></div> 
           : 
           <CompLoader/>

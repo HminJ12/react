@@ -127,3 +127,6 @@ export const fnGetAddress = function(latLngObj){
         }); //시간이 걸림, 주소를 받아오고나서 할 일, 주소를 리턴해준다
       })
 }
+
+
+

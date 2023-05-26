@@ -2,20 +2,24 @@ import React from 'react';
 
 const CompSvg = ({currentData}) => {
 	const {sunrise, sunset, dt} = currentData
-	const fnGetDegree = () => {
-		let range = sunset - sunrise
-		let ratio = (dt - sunrise) / range
+	const fnGetValue = () => {
+		let range; let ratio; let offset; let sun;
+		if(sunrise){
+		range = sunset - sunrise
+		ratio = (dt - sunrise) / range
 		if(ratio > 1) ratio = 1
 		if(ratio < 0) ratio = 0 
-		let offset = 1 - ratio
-
-		let sun = ratio * 100
-		
+		offset = 1 - ratio
+		sun = ratio * 100
+	}else{
+		offset = 1
+		sun = 0
+	}
 
 		return {offset, sun} 
 	} //dt가 내가 마커한 지역 현재시간 
 	
-	const {offset, sun} = fnGetDegree()
+	const {offset, sun} = fnGetValue()
 
 	
 

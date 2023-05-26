@@ -1,4 +1,5 @@
-import { codeEnArr, codeKrArr } from "./conditionCode"
+import moment from "moment-timezone";
+import { codeEnArr, codeKrArr } from "./conditionCode";
 
 export const fnGetWeatherData = function(latLngObj){
   return new Promise((resolve)=>{
@@ -15,22 +16,34 @@ export const fnGetWeatherData = function(latLngObj){
 }
 
 //날씨 정보를 가공해서 리턴하는 함수
-export const fnSetWeatherInfo = function(weatherDataObj){
-  let temp = (weatherDataObj.temp - 273.15).toFixed(1)
-  let sunriseHours =  new Date(weatherDataObj.sunrise * 1000).getHours() //초가 나옴, 날짜가 만들어진다
-  let sunriseApm = (sunriseHours <= 12)? 'AM' : 'PM' //hour보다 apm을 먼저 해야한다
-  sunriseHours = (sunriseHours > 12)? sunriseHours - 12 : sunriseHours
-  sunriseHours = (sunriseHours < 10)? '0' + sunriseHours : sunriseHours
-  let sunriseMinutes = new Date(weatherDataObj.sunrise * 1000).getMinutes()
-  sunriseMinutes = (sunriseMinutes < 10 )? '0' + sunriseMinutes : sunriseMinutes
+export const fnSetWeatherInfo = function(weatherDataObj, timezone){
+  let sunrise; let sunset;
+  if(weatherDataObj.sunrise){
+    sunrise = moment(weatherDataObj.sunrise*1000).tz(timezone).format('A hh:mm:ss')
+    sunset = moment(weatherDataObj.sunset*1000).tz(timezone).format('A hh:mm:ss')
+  }else{
+    sunrise = sunset = '-- : -- : --'
 
+  }
 
-  let sunsetHours = new Date(weatherDataObj.sunset * 1000).getHours()
-  let sunsetApm = (sunsetHours <= 12)? 'AM' : 'PM'
-  sunsetHours = (sunsetHours > 12)? sunsetHours - 12 : sunsetHours
-  sunsetHours = (sunsetHours < 10)? '0' + sunsetHours : sunsetHours
-  let sunsetMinutes = new Date(weatherDataObj.sunrise * 1000).getMinutes()
-  sunsetMinutes = (sunsetMinutes < 10 )? '0' + sunsetMinutes : sunsetMinutes
+  let date = moment(weatherDataObj.dt*1000).tz(timezone).format('YYYY년 M월 D일')
+  let mmdd =  moment(weatherDataObj.dt*1000).tz(timezone).format('M월 D일')
+  let time = moment(weatherDataObj.dt*1000).tz(timezone).format('hh:mm:ss')
+  let apm = moment(weatherDataObj.dt*1000).tz(timezone).format('A')
+  let dayArr = ['일','월','화','수','목','금','토']
+  let day = dayArr[moment(weatherDataObj.dt*1000).tz(timezone).day()]
+
+  let temp; let tempMin; let tempMax; let tempDay; let tempMorn; let tempNight;
+  if(typeof(weatherDataObj.temp)==='object'){ //객체로 나와서 
+    tempMin = (weatherDataObj.temp.min - 273.15).toFixed(1)
+    tempMax = (weatherDataObj.temp.max - 273.15).toFixed(1)
+    tempMorn = (weatherDataObj.temp.morn - 273.15).toFixed(1)
+    tempDay = (weatherDataObj.temp.day - 273.15).toFixed(1)
+    tempNight = (weatherDataObj.temp.night - 273.15).toFixed(1)
+  }else{ //나머지는 number
+    temp = (weatherDataObj.temp - 273.15).toFixed(1)
+  }
+ 
 
   let icon = weatherDataObj.weather[0].icon
   let bg = weatherDataObj.weather[0].main
@@ -38,9 +51,21 @@ export const fnSetWeatherInfo = function(weatherDataObj){
   desc = codeKrArr[codeEnArr.indexOf(desc)] 
   let windDeg = weatherDataObj.wind_deg
   let windSpeed = weatherDataObj.wind_speed
-
   let humidity = weatherDataObj.humidity
-  let rain = (weatherDataObj.rain)? weatherDataObj.rain['1h'] : 0
+  
+  let rain = (weatherDataObj.rain)
+    ? (typeof(weatherDataObj.rain)==='object')
+      ? weatherDataObj.rain['1h'] 
+      : weatherDataObj.rain
+    : 0
+
+  let snow = (weatherDataObj.snow)
+  ? (typeof(weatherDataObj.snow)==='object')
+    ? weatherDataObj.snow['1h'] 
+    : weatherDataObj.snow
+  : 0
+
+
   let uvi = weatherDataObj.uvi
   let uviDesc  
   if(uvi <= 3) uviDesc = '낮음'
@@ -49,26 +74,14 @@ export const fnSetWeatherInfo = function(weatherDataObj){
   else if(uvi > 8 && uvi <= 11) uviDesc = '매우높음'
   else uviDesc = '위험'
   
-  let dtDate = new Date(weatherDataObj.dt * 1000)
-
-  let hour = dtDate.getHours()
-  let apm = (hour <= 12)? '오전' : '오후'
-  hour = (hour >= 12)? hour - 12 : hour
-  hour = (hour < 10)? '0' + hour : hour 
-  let min = dtDate.getMinutes()
-  min = (min < 10)? '0' + min : min 
-  let year = dtDate.getFullYear()
-  let month = dtDate.getMonth() + 1
-  let date = dtDate.getDate()
-  let dayArr = ['일','월','화','수','목','금','토']
-  let day = dayArr[dtDate.getDay()]
+  
 
 
   return {
-    temp, 
-    sunriseHours,sunriseMinutes, sunriseApm, 
-    sunsetHours, sunsetMinutes, sunsetApm, 
-    icon, bg, desc, windDeg, windSpeed, humidity, rain, uvi, uviDesc,
-    hour, apm, min, year, month, date, day
+    temp, tempMin, tempMax, tempMorn, tempDay, tempNight,
+    icon, bg, desc, 
+    windDeg, windSpeed, humidity, rain, uvi, uviDesc, snow,
+    sunrise, sunset, date, day, time, apm, mmdd, 
+    
   }
 }

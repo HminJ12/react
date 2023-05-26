@@ -6,19 +6,20 @@ import CompSvg from './CompSvg';
 const CompCurrentOutput = () => {
 
   //_weatherData가 존재해야 출력이 되므로 바로 데이터를 사용할 수 있음
-  const {fnAppInit, _weatherData, _address } = useContext(AppContext)
+  const {
+    fnAppInit, _weatherData, _address,
+  } = useContext(AppContext)
 
-  const { 
-    temp, 
-    sunriseHours, sunriseMinutes, sunriseApm, 
-    sunsetHours, sunsetMinutes, sunsetApm, 
-    icon, bg, desc, windDeg, windSpeed, humidity, rain, uvi, uviDesc,
-    hour, apm, min, year, month, date, day
-  } = fnSetWeatherInfo(_weatherData.current)
+  const {
+    temp,
+    icon, bg, desc,
+    windDeg, windSpeed, humidity, rain, uvi, uviDesc, snow,
+    sunrise, sunset, date, day, time, apm,
+  } = fnSetWeatherInfo(_weatherData.current, _weatherData.timezone)
 
-  const fnResetHandler = function(){
+  const fnResetHandler = function () {
     let result = window.confirm('현재위치로 날씨정보를 갱신하시겠습니까?')
-    if(result) fnAppInit()
+    if (result) fnAppInit()
   }
 
 
@@ -37,15 +38,11 @@ const CompCurrentOutput = () => {
         <div className="sunset">
           <CompSvg currentData={_weatherData.current} />
           <time className='rise-time'>
-            <small>{sunriseApm}</small>
-            <b>{sunriseHours}:</b>
-            <b>{sunriseMinutes}</b>
+            {sunrise}
           </time>
 
           <time className='set-time'>
-            <small>{sunsetApm}</small>
-            <b>{sunsetHours}:</b>
-            <b>{sunsetMinutes}</b>
+            {sunset}
           </time>
         </div>
 
@@ -61,7 +58,7 @@ const CompCurrentOutput = () => {
           <p className='desc'>" {desc} "</p>
           <p className='etc'>
             <span className='wind'>
-              <i style={{transform:`rotate(${windDeg-45}deg)`}} className="fa-solid fa-location-arrow"></i>
+              <i style={{ transform: `rotate(${windDeg - 45}deg)` }} className="fa-solid fa-location-arrow"></i>
               <i className="fa-solid fa-wind"></i>
               <b>{windSpeed}</b>
               <small>k/h</small>
@@ -79,16 +76,30 @@ const CompCurrentOutput = () => {
               <small>{uviDesc}</small>
             </span>
 
-            <span className='rain'>
-              <i className="fa-solid fa-umbrella"></i>
-              <b>{rain}</b>
-              <small>mm</small>
-            </span>
+            {
+              (rain!==0)&&
+              <span className='rain'>
+                <i className="fa-solid fa-umbrella"></i>
+                <b>{rain}</b>
+                <small>mm</small>
+              </span>
+            }
+
+            {
+              (snow!==0)&&
+              <span className='snow'>
+                <i className="fa-solid fa-snowflake"></i>
+                <b>{snow}</b>
+                <small>mm</small>
+              </span>
+            }
           </p>
 
           <p className='time-date'>
-            <time className='time'>{hour}:{min} {apm}</time>
-            <time className='date'>{year}년 {month}월 {date}일 {day}</time>
+            <time className='time'>
+              <small>{apm}</small> {time}
+            </time>
+            <time className='date'>{date} ({day})</time>
           </p>
         </div>
       </div>
