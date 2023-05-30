@@ -7,14 +7,14 @@ const CompCurrentOutput = () => {
 
   //_weatherData가 존재해야 출력이 되므로 바로 데이터를 사용할 수 있음
   const {
-    fnAppInit, _weatherData, _address,
+    fnAppInit, _weatherData, _addressEn, _addressKo, 
   } = useContext(AppContext)
 
   const {
     temp,
     icon, bg, desc,
     windDeg, windSpeed, humidity, rain, uvi, uviDesc, snow,
-    sunrise, sunset, date, day, time, apm,
+    sunrise, sunset, date, day, time, apm, feelsLike,
   } = fnSetWeatherInfo(_weatherData.current, _weatherData.timezone)
 
   const fnResetHandler = function () {
@@ -31,8 +31,8 @@ const CompCurrentOutput = () => {
       </button>
 
       <address>
-        <span>{_address}</span>
-        <span>{_address}</span>
+        <span>[{ _addressKo} { _addressEn}]</span>
+        <span>[{ _addressKo} { _addressEn}]</span>
       </address>
       <div className="circle-container">
         <div className="sunset">
@@ -52,7 +52,7 @@ const CompCurrentOutput = () => {
             <img src={`${process.env.PUBLIC_URL}/img/icons/${icon}.gif`} alt="" />
             <span>
               <i>체감</i>
-              <b>23<sup>&#176;c</sup></b>
+              <b>{feelsLike}<sup>&#176;c</sup></b>
             </span>
           </p>
           <p className='desc'>" {desc} "</p>

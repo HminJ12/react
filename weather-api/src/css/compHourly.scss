@@ -1,0 +1,55 @@
+@use "./mixin" as m;
+
+.comp-hourly{
+  .section-inner{
+    padding-top: 0 !important;
+    overflow: auto;
+    h2{
+      position: sticky;
+      left: 0;
+    }
+    @media screen and (min-width:900px) {
+      display: flex;
+      flex-direction: column;
+    }
+    .wrap{
+      position: relative;
+      display: inline-table; //자식 크기에 따라서 알아서 늘어나는 거, 예전에 쓰던 방법
+      @media screen and (min-width:900px) {
+        height: 100%;
+      }
+      @media screen and (max-width:900px) {
+        height: 400px;
+      }
+      ul{
+        display: inline-flex; //안쪽에 있는 li들이 계속 커지면 ul도 같이 커져야 하기 때문에
+        height: 100%;
+        li{
+          padding-top: 20px;
+          width: 70px;
+          height: 100%;
+          box-sizing: border-box;
+          &:nth-child(even){
+            background: rgba(#FFF,0.5);
+          }
+          p{
+            margin: 3px 0;
+            font-size: 0.9em;
+            text-align: center;
+            img{
+              display: inline-block;
+              width: 80%;
+            }
+          }
+        }
+      } //ul
+      .chart-wrap{
+        position: absolute;
+        left: 5;
+        bottom: 0;
+        width: calc(100% - 35px);
+        height: 50%;
+      }
+    }
+  }
+}

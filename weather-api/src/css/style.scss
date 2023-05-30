@@ -64,7 +64,7 @@ h1{
 }
 
 #root{
-  @include m.posLT(absolute,50%,50%,-50%,-48%);
+  @include m.posLT(fixed,50%,50%,-50%,-48%);
   width: min(95%, 1100px);
   height: min(90%, 800px);
   box-sizing: border-box;
@@ -85,6 +85,7 @@ h1{
     }
   }
   .app-inner{
+    position: relative;
     height: 100%;
     @media screen and (min-width:900px){
       display: flex;
@@ -94,6 +95,7 @@ h1{
     @media screen and (max-width:900px){
       overflow: hidden;
       overflow-y: auto;
+      overflow-x: hidden;
     }
     section{
       box-sizing: border-box;
@@ -109,6 +111,7 @@ h1{
         box-sizing: border-box;
         padding: 10px;
         border-radius: 10px;
+        min-height: 250px;
         @media screen and (min-width:900px){
           height: 100%;
           overflow: auto; 
@@ -134,6 +137,8 @@ h1{
           @media screen and (min-width:900px){
             position: sticky;
             top: 0; //부모가 overflow가 되면 좌표가 부모기준이 된다
+            left: 0;
+            z-index: 1;
           }
         }
       }

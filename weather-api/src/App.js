@@ -13,7 +13,8 @@ export const AppContext = createContext()
 function App() {
   const [_latLng, _setLatLng] = useState(null) //객체로 세팅, 위경도 
   const [_weatherData, _setWeatherData] = useState(null) //날씨 데이터
-  const [_address, _setAddress] = useState(null)
+  const [_addressEn, _setAddressEn] = useState(null)
+  const [_addressKo, _setAddressKo] = useState(null)
 
 
   //moment() 괄호 안에 아무것도 안 넣으면 현재 시간을 말한다 moment(Date.now())
@@ -23,8 +24,10 @@ function App() {
     let latLngObj = await fnGetLatLng() //위도와 경도를 객체로 반환
     _setLatLng(latLngObj) //위경도 상태 설정
 
-    let address = await fnGetAddress(latLngObj) //주소를 반환해주는 함수
-    _setAddress(address)
+    let addressKo = await fnGetAddress(latLngObj, 'ko') //주소를 반환해주는 함수, 한글
+    _setAddressKo(addressKo)
+    let addressEn = await fnGetAddress(latLngObj, 'en') //주소를 반환해주는 함수, 영어
+    _setAddressEn(addressEn)
     const weatherData = await fnGetWeatherData(latLngObj) //api비동기 통신으로 날씨정보를 반환
     _setWeatherData(weatherData)
 
@@ -42,7 +45,7 @@ function App() {
       fnAppInit, 
       _latLng, _setLatLng, //위경도
       _weatherData, _setWeatherData, //날씨정보 
-      _address, _setAddress, //주소정보
+      _addressEn, _setAddressEn, _addressKo, _setAddressKo, //주소정보
     }}>
       <h1><img src={`${process.env.PUBLIC_URL}/img/main/title.png`} alt=""/></h1>
       <div className="app-inner">
