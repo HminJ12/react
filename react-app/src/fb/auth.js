@@ -12,9 +12,9 @@ export const fnCreateUser = (email, password) => {
   }) //then 비동기라 이메일 인증받고 기다려야 하기 때문에 return new Promise해야 함
 }
 
-export const fnUpdateProfile = (nickName) => {
+export const fnUpdateProfile = (nickName, photoUrl) => {
   return new Promise((resolve) => {
-    updateProfile(auth.currentUser, { displayName: nickName, }).then(() => {
+    updateProfile(auth.currentUser, { displayName: nickName, photoURL: photoUrl }).then(() => {
       resolve()
     }).catch((error) => {
       alert(error.message)

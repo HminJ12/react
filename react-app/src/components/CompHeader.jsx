@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../App';
-import { fnDeleteUser, fnSignOut } from '../fb/auth';
+import { auth, fnDeleteUser, fnSignOut } from '../fb/auth';
 import { Link } from 'react-router-dom';
 
 const CompHeader = () => {
@@ -15,6 +15,7 @@ const CompHeader = () => {
     const result = window.confirm('회원을 탈퇴하시겠습니까?')
     if(result){
       await fnDeleteUser()
+      alert('회원에서 탈퇴하셨습니다')
       navi('/signin')
     }
   }
@@ -25,6 +26,8 @@ const CompHeader = () => {
       {
         (_isLogged) ?
           <div>
+            <img style={{width:'50px', height:'50px', objectFit:'cover', objectPosition:'center'}} src={auth.currentUser.photoURL} alt="" />
+            <b>{auth.currentUser.displayName}</b>
             <button onClick={fnSignOutHandler}>로그아웃</button>
             <button onClick={fnDeleteUserHandler}>회원탈퇴</button>
           </div>
