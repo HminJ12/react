@@ -1,0 +1,11 @@
+123개의 목록이 있는데 10개씩 출력하고 싶어요
+-> 페이징
+올림(123/10) -> 13개가 필요
+for구문으로 해야한다
+
+5번을 클릭했을 때 (41~50)
+
+시작번호(5-1)*10+1 (41)
+끝번호는 시작번호 + (10-1)
+
+https://raw.githubusercontent.com/kjhardcore76/json/main/prdlist.json

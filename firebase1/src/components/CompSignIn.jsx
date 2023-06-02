@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { auth, fnCheckEmailVerification, fnSetPersistence, fnSignIn, fnSignOut } from '../fb/auth';
+import { auth, fnCheckEmailVerification, fnSetPersistence, fnSignIn, fnSignInGoogle, fnSignOut } from '../fb/auth';
 import { AppContext } from '../App';
 
 const CompSignIn = () => {
@@ -23,6 +23,12 @@ const CompSignIn = () => {
     }
   }
 
+  const fnSignInGoogleHandler = async () => {
+    await fnSignInGoogle()
+    alert('구글계정으로 로그인 하셨습니다')
+    navi('/')
+  }
+
   return (
     <section>
       <h3>로그인</h3>
@@ -32,6 +38,7 @@ const CompSignIn = () => {
         <p><input type="checkbox" checked={_checked} onChange={()=>{_setChecked(c=>!c)}} />기억하기</p>
         <p><button>로그인</button></p>
       </form>
+      <button onClick={fnSignInGoogleHandler}>구글로그인</button>
     </section>
   );
 };

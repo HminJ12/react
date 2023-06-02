@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { fnDeldeteDoc, fnGetDoc, fnUpdateDoc } from '../fb/db';
+import { fnDeleteDoc, fnGetDoc, fnUpdateDoc } from '../fb/db';
 import { auth } from '../fb/auth';
 
 
@@ -40,7 +40,7 @@ const CompDetail = () => {
     e.preventDefault()
     const result = window.confirm('일정을 삭제하시겠습니까?')
     if(!result) return 
-    await fnDeldeteDoc(auth.currentUser.uid, docid) 
+    await fnDeleteDoc(auth.currentUser.uid, docid) 
     alert('일정이 삭제되었습니다. 목록으로 이동합니다')
     navi('/')
   }

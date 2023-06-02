@@ -47,6 +47,18 @@ export const fnCheckEmailVerification = () => {
   )
 } //비동기할 필요가 없다, 로그인한 다음에 실행되는 함수
 
+export const fnSignInGoogle = () => {
+  return new Promise((resolve)=>{
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth,provider).then((result) => {
+      resolve()
+    }).catch((error) => {
+      alert(error.message)
+    });
+  })  
+}
+
+
 export const fnSetPersistence = (checked) => {
   return new Promise((resolve)=>{
     if (checked) {
@@ -89,7 +101,14 @@ export const fnDeleteUser = () => {
     deleteUser(auth.currentUser).then(() => {
       resolve()
     }).catch((error) => {
-      alert(error.message)
+      if (error.message === 'auth/requires-recent-login') {
+        alert('로그아웃 후 다시 로그인 하신 후 회원탈퇴를 실행해주세요\n강제 로그아웃 하겠습니다');
+        fnSignOut()
+      } else {
+        alert(error.message)
+      }
     });
   })
 }
+
+/* \n 줄내림 */

@@ -16,7 +16,7 @@ export const fnGetDateInfo = function (yymmdd) {
   month = (month < 10)? '0' + month : month //0이 나오는 조건
   let date = dday.getDate()
   date = (date < 10)? '0' + date : date //0이 나오는 조건
-  let ap = (dday.getHours() <= 12) ? 'am' : 'pm'  //시간이 나오는데 13시부터 1시가 나오게 조건을 건다
+  let ap = (dday.getHours() < 12) ? 'am' : 'pm'  //시간이 나오는데 13시부터 1시가 나오게 조건을 건다
   let hour = (dday.getHours() <= 12) ? dday.getHours() : dday.getHours() - 12
   hour = (hour < 10)? '0' + hour : hour //0이 나오는 조건
   let min = dday.getMinutes()
