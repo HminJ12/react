@@ -1,0 +1,34 @@
+@use './mixin' as m;
+
+.section-signin{
+  form{
+    width: 100%;
+    .email{
+      @include m.inputWrap('login/icon-email.png',true);
+    }
+    .password{
+      @include m.inputWrap('login/icon-key.png',true);
+    }
+    .btn{
+      @include m.inputWrap('login/icon-email.png',false);
+    }
+    .remember{
+      padding-bottom: 10px;
+      border-top: 1px dotted var(--green);
+      input:checked ~ label{
+        img:first-child{display: none;}
+        img:last-child{display: block;}
+      }
+      label{
+        cursor: pointer;
+        img{
+          height: 35px;
+          margin: 0 auto;
+          &:last-child{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

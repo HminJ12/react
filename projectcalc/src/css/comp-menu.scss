@@ -1,0 +1,88 @@
+@use './mixin' as m;
+
+#root{
+  section.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    h1{
+      margin-bottom: 60px;
+    }
+    form.theme{
+      legend{
+        margin-bottom: 10px;
+        font-weight: 800;
+        font-size: 0.8em;
+        text-align: center;
+      }
+      div{
+        display: flex;
+        width: 180px;
+        height: 30px;
+        border-radius: 30px;
+        border: 1px solid #EEE;
+        box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        input{
+          display: none;
+          &:checked + label{
+            opacity: 1;
+          }
+          &:checked + label::before{
+            display: block;
+          }
+        }
+        label{
+          position: relative;
+          flex: 1;
+          cursor: pointer;
+          @include m.icon(before,'\f00c');
+          opacity: 0.3;
+          &:hover{
+            opacity: 1;
+          } //모바일에서는 hover가 안 된다
+          &[for="radio1"]{
+            background: #9e9ffa;
+          }
+          &[for="radio2"]{
+            background: #f3e56b;
+          }
+          &[for="radio3"]{
+            background: rgb(97, 226, 104);
+          }
+          &::before{
+            display: none; //기본으로 숨긴다
+            @include m.posLT(absolute,50%,50%,-50%,-50%);
+            color: #FFF;
+          }
+        }
+      }
+    }
+    nav{
+      margin-top: 40px;
+      font-weight: 900;
+      text-transform: uppercase;
+      a{
+        display: block;
+        margin: 20px 0;
+        padding: 7px 20px;
+        box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border-radius: 20px;
+        &:hover{
+          text-shadow: -2px -2px 1px rgba(255, 255, 255, 1), 2px 2px 1px rgba(0, 0, 0, 0.1);
+        }
+        &:active{
+          box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.2), 3px 3px 5px rgba(255, 255, 255, 1);
+        } //누르고 있는 동안, 가상 선택자
+        i{
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

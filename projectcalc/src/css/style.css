@@ -1,0 +1,129 @@
+body {
+  color: #666;
+  font-family: "Orbitron", "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  margin-top: 0 !important;
+}
+
+body {
+  height: 100vh;
+  background-size: 10px, 100%;
+}
+body.purple {
+  background-image: url(../assets/img/pattern2.png), linear-gradient(#ffeefe, #c698eb);
+}
+body.purple #root {
+  background: linear-gradient(#ffeefe, #c698eb);
+  color: #9e9ffa;
+}
+@media (hover: hover) {
+  body.purple #root article.dday-list ul::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+  }
+  body.purple #root article.dday-list ul::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+  }
+  body.purple #root article.dday-list ul::-webkit-scrollbar-thumb {
+    background-color: #9e9ffa;
+  }
+}
+body.orange {
+  background-image: url(../assets/img/pattern3.png), linear-gradient(#fffeed, #f3a86b);
+}
+body.orange #root {
+  background: linear-gradient(#fffeed, #f3a86b);
+  color: #f38888;
+}
+@media (hover: hover) {
+  body.orange #root article.dday-list ul::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: f5f5f5;
+  }
+  body.orange #root article.dday-list ul::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+  }
+  body.orange #root article.dday-list ul::-webkit-scrollbar-thumb {
+    background-color: #e9d981;
+  }
+}
+body.green {
+  background-image: url(../assets/img/pattern4.png), linear-gradient(#ebffee, #78da8c);
+}
+body.green #root {
+  background: linear-gradient(#ebffee, #78da8c);
+  color: #60a063;
+}
+@media (hover: hover) {
+  body.green #root article.dday-list ul::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #c4ffb8;
+  }
+  body.green #root article.dday-list ul::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+  }
+  body.green #root article.dday-list ul::-webkit-scrollbar-thumb {
+    background-color: #60a063;
+  }
+}
+body #root {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(95%, 500px);
+  height: min(95%, 800px);
+  overflow: hidden;
+  overflow-y: auto;
+  box-shadow: -2px -2px 5px rgb(255, 255, 255), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+body #root section {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+}
+body #root section h1,
+body #root section h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.7em;
+  text-shadow: -2px -2px 1px rgb(255, 255, 255), 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+body #root .back-btn {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+  transform: scale(-1);
+}
+body #root .back-btn:hover {
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=style.css.map */
