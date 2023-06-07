@@ -46,13 +46,13 @@
             opacity: 1;
           } //모바일에서는 hover가 안 된다
           &[for="radio1"]{
-            background: #9e9ffa;
+            background: rgb(107, 130, 204);
           }
           &[for="radio2"]{
-            background: #f3e56b;
+            background: #f38888;
           }
           &[for="radio3"]{
-            background: rgb(97, 226, 104);
+            background: #60a063;
           }
           &::before{
             display: none; //기본으로 숨긴다

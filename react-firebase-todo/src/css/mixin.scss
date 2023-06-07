@@ -112,25 +112,35 @@ $portrait :'screen and (orientation:portrait)';
       &::-webkit-calendar-picker-indicator{
         width: 30px;
         height: 30px;
+        background-color: var(--beige);
+        border: 1px dotted var(--orange);
         background-image: url(../assets/img/#{$path});
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
       }
     } 
+    &[type=file]~label{
+      display: block;
+      padding: 10px;
+      cursor: pointer;
+      background: var(--beige);
+      border: 1px dotted var(--orange);
+      color: #ffc876;
+      &:hover, &:active{
+        background: #FFF;
+        color: var(--orange);
+      }
+    } //file 뒤에 있는 label
   }
   textarea{
     display: block;
     height: 200px;
     resize: none;
   }
-  button{
+  button, a{
     display: block;
     margin: 0 auto;
-    &:disabled{
-      opacity: 0.5;
-      pointer-events: none;
-    }
     &:active{
       animation: rubberBand 0.3s;
     }

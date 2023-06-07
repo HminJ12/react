@@ -70,7 +70,6 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
 }
 #root main article section {
   flex: 1 0 1px;
@@ -78,11 +77,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 0;
+  margin-bottom: 30px;
 }
 #root main article section h2 {
   width: 60%;
-  margin-bottom: 10px;
   max-width: 220px;
 }
 #root main article section h2 img {

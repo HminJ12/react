@@ -1,0 +1,150 @@
+.section-home .scroll-wrap ul li:nth-child(even) {
+  background: rgba(255, 255, 255, 0.3);
+}
+.section-home .scroll-wrap ul li a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 15px 5px;
+  background-image: url(../assets/img/list/line-dashed.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.section-home .scroll-wrap ul li a .thumnail {
+  width: 60px;
+  height: 60px;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-right: 10px;
+  object-fit: cover;
+  object-position: center;
+  background: var(--beige);
+}
+.section-home .scroll-wrap ul li a .metabox {
+  width: calc(100% - 70px);
+}
+.section-home .scroll-wrap ul li a .metabox p {
+  display: flex;
+}
+.section-home .scroll-wrap ul li a .metabox p em, .section-home .scroll-wrap ul li a .metabox p time {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.section-home .scroll-wrap ul li a .metabox p em img, .section-home .scroll-wrap ul li a .metabox p time img {
+  margin-right: 5px;
+}
+.section-home .scroll-wrap ul li a .metabox p time {
+  font-size: 0.9em;
+  letter-spacing: 0em;
+}
+.section-home .scroll-wrap ul li a .metabox p .date {
+  color: var(--green);
+}
+.section-home .scroll-wrap ul li a .metabox p .time {
+  color: var(--sky);
+}
+.section-home .scroll-wrap ul li a .metabox p .title {
+  display: block;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #000;
+}
+.section-home .scroll-wrap ul li a .metabox p .title img {
+  display: inline-block;
+}
+.section-home .scroll-wrap ul li a .more {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+@media screen and (max-width:600px) {
+  .section-home .scroll-wrap ul li a .more {
+    display: none;
+  }
+}
+.section-home .scroll-wrap ul li a:hover {
+  background-color: var(--beige);
+}
+.section-home p.add-btn-wrap {
+  position: relative;
+  margin: 10px 0;
+}
+.section-home p.add-btn-wrap input:not([type=checkbox], [type=radio]), .section-home p.add-btn-wrap textarea {
+  display: block;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  background: var(--beige);
+  border: 1px dotted var(--orange);
+}
+.section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])::placeholder, .section-home p.add-btn-wrap textarea::placeholder {
+  color: #ffc876;
+}
+.section-home p.add-btn-wrap input:not([type=checkbox], [type=radio]):focus, .section-home p.add-btn-wrap textarea:focus {
+  background: #FFF;
+}
+.section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-home p.add-btn-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-home p.add-btn-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
+  width: 30px;
+  height: 30px;
+  background-color: var(--beige);
+  border: 1px dotted var(--orange);
+  background-image: url(../assets/img/icons/icon-email.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=file] ~ label, .section-home p.add-btn-wrap textarea[type=file] ~ label {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  background: var(--beige);
+  border: 1px dotted var(--orange);
+  color: #ffc876;
+}
+.section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=file] ~ label:hover, .section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=file] ~ label:active, .section-home p.add-btn-wrap textarea[type=file] ~ label:hover, .section-home p.add-btn-wrap textarea[type=file] ~ label:active {
+  background: #FFF;
+  color: var(--orange);
+}
+.section-home p.add-btn-wrap textarea {
+  display: block;
+  height: 200px;
+  resize: none;
+}
+.section-home p.add-btn-wrap button, .section-home p.add-btn-wrap a {
+  display: block;
+  margin: 0 auto;
+}
+.section-home p.add-btn-wrap button:active, .section-home p.add-btn-wrap a:active {
+  animation: rubberBand 0.3s;
+}
+.section-home p.add-btn-wrap button img, .section-home p.add-btn-wrap a img {
+  height: 50px;
+}
+@keyframes rubberBand {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}/*# sourceMappingURL=section-home.css.map */

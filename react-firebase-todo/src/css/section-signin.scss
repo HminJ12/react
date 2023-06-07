@@ -3,19 +3,19 @@
 .section-signin{
   form{
     width: 100%;
-    .email{
-      @include m.inputWrap('login/icon-email.png',true);
+    .email-wrap{
+      @include m.inputWrap('icons/icon-email.png',true);
     }
-    .password{
-      @include m.inputWrap('login/icon-key.png',true);
+    .password-wrap{
+      @include m.inputWrap('icons/icon-key.png',true);
     }
-    .btn{
-      @include m.inputWrap('login/icon-email.png',false);
+    .btn-wrap{
+      @include m.inputWrap('icons/icon-email.png',false);
     }
-    .remember{
-      padding-bottom: 10px;
-      border-top: 1px dotted var(--green);
-      input:checked ~ label{
+    .remember-wrap{
+      padding: 10px 0;
+      border-top: 2px dotted var(--green);
+      input:checked + label{
         img:first-child{display: none;}
         img:last-child{display: block;}
       }
@@ -27,6 +27,21 @@
           &:last-child{
             display: none;
           }
+        }
+      }
+    } //remember-wrap
+    .password-email-wrap{
+      text-align: center;
+      button{
+        padding: 7px 15px;
+        background: var(--beige);
+        border: 1px dotted var(--orange);
+        &:hover{background: #FFF;}
+        &:active{
+          animation: rubberBand 0.3s;
+        }
+        img{
+          height: 30px;
         }
       }
     }

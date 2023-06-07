@@ -24,7 +24,7 @@ const CompMenu = () => {
 
     let theme
     if(n === '1'){
-      theme = 'purple'
+      theme = 'blue'
     }else if(n === '2'){
       theme = 'orange' 
     }else{

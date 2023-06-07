@@ -1,0 +1,50 @@
+@use './mixin' as m;
+
+.section-add{
+  form{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .date-wrap{
+      width: 50%;
+      box-sizing: border-box;
+      padding-right: 5px; 
+      @include m.inputWrap('icons/icon-calendar.png', false);
+    }
+    .time-wrap{
+      width: 50%;
+      box-sizing: border-box;
+      padding-left: 5px;
+      @include m.inputWrap('icons/icon-clock.png', false);
+    }
+    .title-wrap{
+      width: 100%;
+      @include m.inputWrap('icons/icon-pencil.png', true);
+    }
+    .desc-wrap{
+      width: 100%;
+      @include m.inputWrap('icons/icon-balloon.png', true);
+    }
+    .photo-wrap{
+      width: 100%;
+      @include m.inputWrap('icons/icon-photo.png', true);
+    }
+
+  } //form
+
+  .btn-wrap{
+    text-align: center;
+    button{
+      width: 45%;
+      max-width: 200px;
+      &:active{
+        animation: rubberBand 0.3s;
+      }
+      img{
+        max-width: 100%;
+        object-fit: contain;
+      }
+    }
+  } //btn-wrap
+} //section-add

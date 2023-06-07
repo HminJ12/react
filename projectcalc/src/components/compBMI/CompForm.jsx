@@ -64,6 +64,7 @@ const CompForm = () => {
         <label htmlFor="weight"><i className="fa-solid fa-weight-scale"></i> 체중을 입력하세요</label>
         <input id="weight" onInput={fnInputHandler} value={_kg} type="number" min="30" max="500" step={0.1} required placeholder='kg단위로 입력해주세요' />
       </div>
+      
       <button>측정하기</button>
     </form>
   );

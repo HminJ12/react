@@ -6,6 +6,50 @@ header{
   .pin{
     @include m.posLB(absolute,51%,10%,-50%,0);
     height: 90%;
-
+  }
+  >div{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button{
+      height: 80%;
+      img{
+        height: 100%;
+      }
+    }
+  } //before, after
+  
+  .logged-after{
+    .user{
+      display: flex;
+      align-items: center;
+      width: 45%;
+      img{
+        margin-right: 5px;
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 3px solid var(--beige);
+      }
+      em{
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.9em;
+        letter-spacing: 0;
+      }
+    } //user
+    .btns{
+      display: flex;
+      align-items: center;
+      button{
+        margin-left: 10px;
+      }
+    }
   }
 }

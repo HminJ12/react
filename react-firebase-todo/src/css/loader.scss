@@ -1,0 +1,25 @@
+@use './mixin' as m;
+
+.loader{
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: var(--beige);
+  transition: opacity 1s;
+  img{
+    width: 50px;
+    @include m.posLT(absolute,50%,50%,-50%,-50%);
+    animation: spinner 10s infinite linear;
+  }
+  @keyframes spinner {
+    0%{
+      transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100%{
+      transform: translate(-50%,-50%) rotate(360deg);
+    }
+  }
+}

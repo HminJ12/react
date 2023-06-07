@@ -8,4 +8,46 @@ header .pin {
   bottom: 10%;
   transform: translate(-50%, 0);
   height: 90%;
+}
+header > div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header > div button {
+  height: 80%;
+}
+header > div button img {
+  height: 100%;
+}
+header .logged-after .user {
+  display: flex;
+  align-items: center;
+  width: 45%;
+}
+header .logged-after .user img {
+  margin-right: 5px;
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 3px solid var(--beige);
+}
+header .logged-after .user em {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9em;
+  letter-spacing: 0;
+}
+header .logged-after .btns {
+  display: flex;
+  align-items: center;
+}
+header .logged-after .btns button {
+  margin-left: 10px;
 }/*# sourceMappingURL=header.css.map */

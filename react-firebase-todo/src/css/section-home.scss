@@ -1,0 +1,80 @@
+@use "./mixin" as m;
+
+.section-home {
+  .scroll-wrap {
+    ul {
+      li {
+        &:nth-child(even){
+          background: rgba(#FFF, 0.3);
+        }
+        a {
+          position: relative;
+          display: flex;
+          align-items: center;
+          padding: 15px 5px;
+          background-image: url(../assets/img/list/line-dashed.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: bottom;
+          .thumnail {
+            width: 60px;
+            height: 60px;
+            box-sizing: border-box;
+            padding: 5px;
+            margin-right: 10px;
+            object-fit: cover;
+            object-position: center;
+            background: var(--beige);
+          }
+          .metabox {
+            width: calc(100% - 70px);
+            p {
+              display: flex;
+              em, time {
+                display: flex;
+                align-items: center;
+                margin-right: 10px;
+                img {
+                  margin-right: 5px;
+                }
+              } //em, time
+              time{
+                font-size: 0.9em;
+                letter-spacing: 0em;
+              }
+              .date {
+                color: var(--green);
+              }
+              .time {
+                color: var(--sky);
+              }
+              .title {
+                display: block;
+                max-width: 300px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                color: #000;
+                img{
+                  display: inline-block;
+                }
+              }
+            } //p
+          } //metabox
+          .more{
+            @include m.posRT(absolute,5px,50%,0,-50%);
+            @media #{m.$maxSm}{
+              display: none;
+            }
+          } //more
+          &:hover{
+            background-color: var(--beige);
+          }
+        }
+      } //li
+    } //ul
+  }
+  p.add-btn-wrap {
+    @include m.inputWrap("icons/icon-email.png", false);
+  }
+} //section-home

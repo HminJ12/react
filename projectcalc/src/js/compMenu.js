@@ -8,7 +8,7 @@ export const fnGetTheme = ()=>{
     theme = JSON.parse(window.localStorage.getItem('themeStorage')) //true, false
  
     if(theme[1]){
-      className = 'purple'
+      className = 'blue'
     }else if(theme[2]){
       className = 'orange' 
     }else{

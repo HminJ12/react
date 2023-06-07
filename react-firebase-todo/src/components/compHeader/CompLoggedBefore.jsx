@@ -3,7 +3,12 @@ import React from 'react';
 const CompLoggedBefore = () => {
   return (
     <div className='logged-before'>
-      로그인 전
+      <button>
+        <img src={require('../../assets/img/header/btn-sign-in.png')} alt="" />
+      </button>
+      <button>
+        <img src={require('../../assets/img/header/btn-register.png')} alt="" />
+      </button>
     </div>
   );
 };

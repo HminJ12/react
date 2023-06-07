@@ -15,11 +15,11 @@ html {
 body {
   height: 100vh;
   background-size: 10px, 100%;
-  &.purple {
-    background-image: url(../assets/img/pattern2.png), linear-gradient(#ffeefe, #c698eb);
+  &.blue {
+    background-image: url(../assets/img/pattern2.png), linear-gradient(#defeff, #98aeeb);
     #root {
-      background: linear-gradient(#ffeefe, #c698eb);
-      color: #9e9ffa;
+      background: linear-gradient(#defeff, #98aeeb);
+      color: rgb(107, 130, 204);
       //scrollbar style
       article.dday-list ul{
         @media (hover: hover) {
@@ -34,16 +34,16 @@ body {
           }
 
           &::-webkit-scrollbar-thumb {
-            background-color: #9e9ffa;
+            background-color: rgb(107, 130, 204);
           }
         } //데스크톱에서만 사용하겠다, 모바일은 원래 스크롤바, 실제 모바일에서는 적용 안 된다, 데스크탑일 때만 사용한다
       }
     }
   }
   &.orange {
-    background-image: url(../assets/img/pattern3.png), linear-gradient(#fffeed, #f3a86b);
+    background-image: url(../assets/img/pattern3.png), linear-gradient(#ffedd6, #f3a86b);
     #root {
-      background: linear-gradient(#fffeed, #f3a86b);
+      background: linear-gradient(#fffdd6, #f3a86b);
       color: #f38888;
       //scrollbar style
       article.dday-list ul{
@@ -59,16 +59,16 @@ body {
           }
 
           &::-webkit-scrollbar-thumb {
-            background-color: #e9d981;
+            background-color: #f38888;
           }
         }
       }
     }
   }
   &.green {
-    background-image: url(../assets/img/pattern4.png), linear-gradient(#ebffee, #78da8c);
+    background-image: url(../assets/img/pattern4.png), linear-gradient(#ecfdc5, #78da8c);
     #root {
-      background: linear-gradient(#ebffee, #78da8c);
+      background: linear-gradient(#ecfdc5, #78da8c);
       color: #60a063;
       //scrollbar style
       article.dday-list ul{
@@ -107,8 +107,8 @@ body {
       box-sizing: border-box;
       padding: 15px;
       h1,
-      h2 {
-        margin-bottom: 20px;
+      h2, {
+        margin-bottom: 30px;
         text-align: center;
         font-weight: 900;
         font-size: 1.7em;
@@ -120,11 +120,11 @@ body {
       z-index: 10;
       right: 0;
       top: 0;
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
       text-align: center;
-      line-height: 40px;
-      font-size: 1.3em;
+      line-height: 60px;
+      font-size: 1.8em;
       transform: scale(-1); //뒤집힌다
       &:hover{
         color:rgba(#FFF,0.5); 

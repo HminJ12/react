@@ -6,6 +6,13 @@ section.bmi{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  .bmi-scale{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    mix-blend-mode: overlay;
+  }
   form{
     div.radios{
       p{
@@ -66,7 +73,9 @@ section.bmi{
     button{
       width: 100%;
       padding: 10px 0;
+      margin-top: 15px;
       outline: none;
+      border-radius: 30px;
       box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
       &:focus{
         background: rgba(#FFF,0.2);

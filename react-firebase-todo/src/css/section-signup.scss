@@ -1,0 +1,22 @@
+@use './mixin' as m;
+
+.section-signup{
+  form{
+    width: 100%;
+    .email-wrap{
+      @include m.inputWrap('icons/icon-email.png',true);
+    }
+    .password-wrap{
+      @include m.inputWrap('icons/icon-key.png',true);
+    }
+    .nickname-wrap{
+      @include m.inputWrap('icons/icon-nickname.png',true);
+    }
+    .photo-wrap{
+      @include m.inputWrap('icons/icon-photo.png', true);
+    }
+    .btn-wrap{
+      @include m.inputWrap('icons/icon-email.png',false);
+    }
+  }
+}

@@ -27,6 +27,7 @@ const CompBMI = () => {
       _bmi, _setBmi, //bmi 수치출력 state
       }}>
       <section className='bmi'>
+        <img className='bmi-scale' src={require('../../assets/img/scale.png')} alt="" />
         <h2>bmi</h2>
         <CompForm/>
         <CompResult/>
