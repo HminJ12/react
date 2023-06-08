@@ -1,8 +1,11 @@
-import { createContext, useState } from "react";
-import CompHeader from "./components/compHeader/CompHeader";
+import { createContext, useEffect, useState } from "react";
 import fb from "./fb/config";
+import CompHeader from "./components/compHeader/CompHeader";
+
+import { auth } from "./fb/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import CompSignin from "./components/compSingin/CompSignin";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import CompHome from "./components/compHome/CompHome";
 import Comp404 from "./components/comp404/Comp404";
 import CompSignup from "./components/compSignup/CompSignup";
@@ -13,11 +16,30 @@ import CompLoader from "./components/compLoader/CompLoader";
 export const AppContext = createContext()
 
 function App() {
-  const [_islogged, _setIsLogged] = useState(null)
+  const [_islogged, _setIsLogged] = useState(null) //로그인 됐는지 확인하는 변수
+  const [_showLoader, _setShowLoader] = useState(true) //true 보여주겠다
+  const [_fadeOut, _setFadeOut] = useState(false)
+  const navi = useNavigate()
 
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user && auth.currentUser.emailVerified) {
+        _setIsLogged(true)
+        navi('/')
+      } else {
+        _setIsLogged(false)
+        navi('/signin')
+      }
+      _setFadeOut(true)
+    }) //변화가 감지될 때마다
+  },[])
 
   return (
-    <AppContext.Provider>
+    <AppContext.Provider value={{
+      _islogged, _setIsLogged,
+      _showLoader, _setShowLoader,
+      _fadeOut, _setFadeOut,
+    }}>
       <main>
         <img className="main-bg" src={require('./assets/img/common/main-bg.png')} alt="" />
         <h1>
@@ -35,7 +57,7 @@ function App() {
           </Routes>
         </article>
       </main>
-      <CompLoader />
+      {(_showLoader)&&<CompLoader />}
     </AppContext.Provider>
   );
 }

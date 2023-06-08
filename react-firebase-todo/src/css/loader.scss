@@ -1,25 +1,37 @@
 @use './mixin' as m;
 
 .loader{
-  z-index: 10;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: var(--beige);
+  @include m.posLT(absolute, 50%, 50%, -50%, -50%);
+  width: min(90%, 500px);
+  height: min(80%, 700px);
   transition: opacity 1s;
-  img{
-    width: 50px;
+  &.fade-out{
+    opacity: 0;
+  }
+
+  .main-bg {
+    @include m.posLT(absolute, 50%, 2%, -50%, 0);
+    width: 110%;
+    height: 103%;
+  }
+  h6{
+    z-index: 1;
+    position: relative;
+    img {
+      width: 100%;
+    }
+  }
+  figure{
     @include m.posLT(absolute,50%,50%,-50%,-50%);
-    animation: spinner 10s infinite linear;
-  }
-  @keyframes spinner {
-    0%{
-      transform: translate(-50%,-50%) rotate(0deg);
+    width: min(60%, 300px);
+    mix-blend-mode: multiply;
+    .spinner{
+      margin: 0 auto;
+      width: 30%;
     }
-    100%{
-      transform: translate(-50%,-50%) rotate(360deg);
+    .pencil{
+      width: 100%;
     }
   }
+
 }
