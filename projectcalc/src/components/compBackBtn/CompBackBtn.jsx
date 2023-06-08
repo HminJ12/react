@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CompBackBtn = () => {
   return (
     <Link to="/" className='back-btn'>
-      <i class="fa-solid fa-circle-left"></i>
+      <i class="fa-solid fa-circle-arrow-right"></i>
     </Link>
   );
 };
