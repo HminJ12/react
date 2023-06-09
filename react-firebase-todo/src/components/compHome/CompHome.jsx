@@ -1,21 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import CompItem from './CompItem';
+import React, { useContext } from 'react';
+import { AppContext } from '../../App';
+import CompHomeOutput from './CompHomeOutput';
+
+
 
 const CompHome = () => {
+  const {_docsArr} = useContext(AppContext)
   return (
     <section className='section-home'>
-      <h2><img src={require('../../assets/img/list/title-list.png')} alt="" /></h2>
-      <div className="scroll-wrap">
-        <ul>
-          <CompItem/>
-        </ul>
-      </div>
-      <p className='add-btn-wrap'>
-        <Link to='/add'>
-          <img src={require('../../assets/img/list/btn-add-new-list.png')} alt="" />
-        </Link>
-      </p>
+      {
+        _docsArr
+          ? <CompHomeOutput/>
+          : <p>데이터를 불러오는 중</p>
+      }
     </section>
   );
 };

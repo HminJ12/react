@@ -25,11 +25,12 @@
 .section-detail form .date-wrap input:not([type=checkbox], [type=radio]):focus, .section-detail form .date-wrap textarea:focus {
   background: #FFF;
 }
+.section-detail form .date-wrap input:not([type=checkbox], [type=radio])[type=date], .section-detail form .date-wrap input:not([type=checkbox], [type=radio])[type=time], .section-detail form .date-wrap textarea[type=date], .section-detail form .date-wrap textarea[type=time] {
+  outline: none;
+}
 .section-detail form .date-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-detail form .date-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-detail form .date-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-detail form .date-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-calendar.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -39,6 +40,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -106,11 +110,12 @@
 .section-detail form .time-wrap input:not([type=checkbox], [type=radio]):focus, .section-detail form .time-wrap textarea:focus {
   background: #FFF;
 }
+.section-detail form .time-wrap input:not([type=checkbox], [type=radio])[type=date], .section-detail form .time-wrap input:not([type=checkbox], [type=radio])[type=time], .section-detail form .time-wrap textarea[type=date], .section-detail form .time-wrap textarea[type=time] {
+  outline: none;
+}
 .section-detail form .time-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-detail form .time-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-detail form .time-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-detail form .time-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-clock.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -120,6 +125,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -198,11 +206,12 @@
 .section-detail form .title-wrap input:not([type=checkbox], [type=radio]):focus, .section-detail form .title-wrap textarea:focus {
   background: #FFF;
 }
+.section-detail form .title-wrap input:not([type=checkbox], [type=radio])[type=date], .section-detail form .title-wrap input:not([type=checkbox], [type=radio])[type=time], .section-detail form .title-wrap textarea[type=date], .section-detail form .title-wrap textarea[type=time] {
+  outline: none;
+}
 .section-detail form .title-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-detail form .title-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-detail form .title-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-detail form .title-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-pencil.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -212,6 +221,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -290,11 +302,12 @@
 .section-detail form .desc-wrap input:not([type=checkbox], [type=radio]):focus, .section-detail form .desc-wrap textarea:focus {
   background: #FFF;
 }
+.section-detail form .desc-wrap input:not([type=checkbox], [type=radio])[type=date], .section-detail form .desc-wrap input:not([type=checkbox], [type=radio])[type=time], .section-detail form .desc-wrap textarea[type=date], .section-detail form .desc-wrap textarea[type=time] {
+  outline: none;
+}
 .section-detail form .desc-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-detail form .desc-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-detail form .desc-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-detail form .desc-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-balloon.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -304,6 +317,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -397,11 +413,12 @@
 .section-detail form .photo-wrap input:not([type=checkbox], [type=radio]):focus, .section-detail form .photo-wrap textarea:focus {
   background: #FFF;
 }
+.section-detail form .photo-wrap input:not([type=checkbox], [type=radio])[type=date], .section-detail form .photo-wrap input:not([type=checkbox], [type=radio])[type=time], .section-detail form .photo-wrap textarea[type=date], .section-detail form .photo-wrap textarea[type=time] {
+  outline: none;
+}
 .section-detail form .photo-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-detail form .photo-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-detail form .photo-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-detail form .photo-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-photo.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -411,6 +428,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -460,14 +480,24 @@
 .section-detail .btn-wrap {
   text-align: center;
 }
+.section-detail .btn-wrap button, .section-detail .btn-wrap a {
+  vertical-align: middle;
+  margin: 0 5px;
+}
 .section-detail .btn-wrap button {
-  width: 45%;
+  width: 37%;
   max-width: 150px;
 }
 .section-detail .btn-wrap button:active {
   animation: rubberBand 0.3s;
 }
 .section-detail .btn-wrap button img {
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+}
+.section-detail .btn-wrap a {
+  display: inline-block;
+  width: 13%;
+}
+.section-detail .btn-wrap a img {
+  width: 100%;
 }/*# sourceMappingURL=section-detail.css.map */

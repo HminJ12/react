@@ -35,7 +35,8 @@
 
   .btn-wrap{
     text-align: center;
-    button{
+    button, a{
+      display: inline-block;
       width: 45%;
       max-width: 200px;
       &:active{

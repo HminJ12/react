@@ -32,11 +32,12 @@
 .section-signin form .email-wrap input:not([type=checkbox], [type=radio]):focus, .section-signin form .email-wrap textarea:focus {
   background: #FFF;
 }
+.section-signin form .email-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signin form .email-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signin form .email-wrap textarea[type=date], .section-signin form .email-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signin form .email-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signin form .email-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signin form .email-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signin form .email-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-email.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -46,6 +47,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -123,11 +127,12 @@
 .section-signin form .password-wrap input:not([type=checkbox], [type=radio]):focus, .section-signin form .password-wrap textarea:focus {
   background: #FFF;
 }
+.section-signin form .password-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signin form .password-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signin form .password-wrap textarea[type=date], .section-signin form .password-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signin form .password-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signin form .password-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signin form .password-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signin form .password-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-key.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -137,6 +142,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -201,11 +209,12 @@
 .section-signin form .btn-wrap input:not([type=checkbox], [type=radio]):focus, .section-signin form .btn-wrap textarea:focus {
   background: #FFF;
 }
+.section-signin form .btn-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signin form .btn-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signin form .btn-wrap textarea[type=date], .section-signin form .btn-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signin form .btn-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signin form .btn-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signin form .btn-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signin form .btn-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-email.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -215,6 +224,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;

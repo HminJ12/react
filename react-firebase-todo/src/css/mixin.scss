@@ -95,6 +95,7 @@ $portrait :'screen and (orientation:portrait)';
       background-image: url(../assets/img/#{$path});
     }
   }
+
   input:not([type=checkbox], [type=radio]), textarea{
     display: block;
     outline: none;
@@ -109,11 +110,10 @@ $portrait :'screen and (orientation:portrait)';
       background: #FFF;
     }
     &[type=date], &[type=time]{
+      outline: none;
       &::-webkit-calendar-picker-indicator{
         width: 30px;
         height: 30px;
-        background-color: var(--beige);
-        border: 1px dotted var(--orange);
         background-image: url(../assets/img/#{$path});
         background-size: contain;
         background-repeat: no-repeat;
@@ -124,6 +124,9 @@ $portrait :'screen and (orientation:portrait)';
       display: block;
       padding: 10px;
       cursor: pointer;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       background: var(--beige);
       border: 1px dotted var(--orange);
       color: #ffc876;

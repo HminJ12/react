@@ -9,9 +9,23 @@ export const fnUploadFile = (uid, file) => {
         resolve({
           outputUrl: outputUrl,
           storageUrl: `${uid}/${Date.now()}-${file.name}`,
-          orgURL: file.name,
+          orgUrl: file.name,
         }) //resolve
       })
     })
+  })
+}
+
+export const fnDeleteFolder = (folderName) => {
+  return new Promise((resolve)=>{
+    const folderRef = ref(storage, folderName);
+    listAll(folderRef)
+      .then((dir) => {
+        dir.items.forEach((v) => {
+          const fileRef = ref(storage, `${folderRef.fullPath}/${v.name}`);
+          deleteObject(fileRef)
+        })
+        resolve()
+      })
   })
 }

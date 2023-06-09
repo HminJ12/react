@@ -16,7 +16,6 @@ const CompSignin = () => {
   const fnSigninHandler = async (e) => {
     e.preventDefault()
     _setShowLoader(true)
-    _setFadeOut(false)
     //let timeoutID
     //clear는 연속으로 누를 때 사용
     /* setTimeout(() => {

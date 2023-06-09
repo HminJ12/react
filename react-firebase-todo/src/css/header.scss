@@ -35,13 +35,23 @@ header{
         box-sizing: border-box;
         border: 3px solid var(--beige);
       }
-      em{
+      span{
         flex: 1;
-        white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 0.9em;
-        letter-spacing: 0;
+        em{
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 0.9em;
+          letter-spacing: 0;
+          &:first-child{
+            color: var(--sky);
+          }
+          &:last-child{
+            color: var(--green);
+          }
+        }
       }
     } //user
     .btns{
