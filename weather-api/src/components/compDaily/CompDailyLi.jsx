@@ -19,7 +19,7 @@ const CompDailyLi = ({ data }) => { //data는 객체
     $(e.currentTarget).siblings('.detail').stop().slideToggle()
     $(`.comp-daily li a`).not($(e.currentTarget)).removeClass('active')
     $(e.currentTarget).toggleClass('active')
-  } // $(e.currentTarget) -> $(this)이다
+  } // $(e.currentTarget) -> $(this)이다  
 
   return (
     <li>
