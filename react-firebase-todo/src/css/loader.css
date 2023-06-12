@@ -39,4 +39,20 @@
 }
 .loader figure .pencil {
   width: 100%;
+}
+
+.list-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+.list-loader img {
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }/*# sourceMappingURL=loader.css.map */

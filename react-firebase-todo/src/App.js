@@ -19,7 +19,7 @@ export const AppContext = createContext()
 
 function App() {
   const [_init, _setInit] = useState(true) //초기화
-  const [_islogged, _setIsLogged] = useState(null) //로그인 됐는지 확인하는 변수
+  const [_isLogged, _setIsLogged] = useState(null) //로그인 됐는지 확인하는 변수
   const [_showLoader, _setShowLoader] = useState(true) //true 보여주겠다
   const [_fadeOut, _setFadeOut] = useState(false)
   const [_docsCnt, _setDocsCnt] = useState(0)
@@ -35,7 +35,7 @@ function App() {
         _setIsLogged(true)
         onSnapshot(collection(db, auth.currentUser.uid), async () => {
           const docsCnt = await fnGetDocsCnt(auth.currentUser.uid)
-          const {docsArr, nextDoc} = await fnGetDocs(auth.currentUser.uid, 5) //목록을 새로 만들거나 삭제할 때 목록 5개만 나오게 하겠다
+          const {docsArr, nextDoc} = await fnGetDocs(auth.currentUser.uid, 5) //목록을 새로 만들거나 삭제할 때 목록 5개만 나오게 하겠다 스크롤바가 생길 정도로 만들어야 한다
           _setDocsCnt(docsCnt); _setDocsArr(docsArr); _setDocsOutputArr(docsArr); _setNextDoc(nextDoc)
         })
         navi('/')
@@ -52,7 +52,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{
-      _islogged, _setIsLogged,
+      _isLogged, _setIsLogged,
       _showLoader, _setShowLoader,
       _fadeOut, _setFadeOut,
       _docsCnt, _setDocsCnt,
@@ -72,7 +72,7 @@ function App() {
             <Route path="/signin" element={<CompSignin />} />
             <Route path="/signup" element={<CompSignup />} />
             <Route path="/add" element={<CompAdd />} />
-            <Route path="/detail" element={<CompDetail />} />
+            <Route path="/detail/:id" element={<CompDetail />} />
             <Route path="*" element={<Comp404 />} />
           </Routes>
         </article>

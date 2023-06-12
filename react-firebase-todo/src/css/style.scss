@@ -64,6 +64,7 @@ body {
       display: flex;
       flex-direction: column;
       section {
+        position: relative;
         flex: 1 0 1px;
         display: flex;
         flex-direction: column;

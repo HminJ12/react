@@ -4,12 +4,31 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.section-detail form .date-wrap {
-  width: 50%;
+.section-detail form .thumbnail {
+  width: 70%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 10px;
   box-sizing: border-box;
-  padding-right: 5px;
+  padding: 5px;
+  background: var(--beige);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.section-detail form .date-wrap {
+  box-sizing: border-box;
   position: relative;
   margin: 10px 0;
+}
+@media screen and (min-width:600px) {
+  .section-detail form .date-wrap {
+    width: 50%;
+    padding-right: 5px;
+  }
+}
+@media screen and (max-width:600px) {
+  .section-detail form .date-wrap {
+    width: 100%;
+  }
 }
 .section-detail form .date-wrap input:not([type=checkbox], [type=radio]), .section-detail form .date-wrap textarea {
   display: block;
@@ -90,11 +109,20 @@
   }
 }
 .section-detail form .time-wrap {
-  width: 50%;
   box-sizing: border-box;
-  padding-left: 5px;
   position: relative;
   margin: 10px 0;
+}
+@media screen and (min-width:600px) {
+  .section-detail form .time-wrap {
+    width: 50%;
+    padding-right: 5px;
+  }
+}
+@media screen and (max-width:600px) {
+  .section-detail form .time-wrap {
+    width: 100%;
+  }
 }
 .section-detail form .time-wrap input:not([type=checkbox], [type=radio]), .section-detail form .time-wrap textarea {
   display: block;
@@ -366,17 +394,26 @@
     transform: scale3d(1, 1, 1);
   }
 }
+.section-detail form .check-wrap {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .section-detail form .check-wrap input:checked + label img.img-check {
   display: none;
 }
 .section-detail form .check-wrap input:checked + label img.img-checked {
-  display: block;
+  display: inline-block;
 }
 .section-detail form .check-wrap label {
   cursor: pointer;
 }
 .section-detail form .check-wrap label img {
-  width: 180px;
+  display: inline-block;
+  width: 30px;
+  vertical-align: top;
 }
 .section-detail form .check-wrap label img.img-checked {
   display: none;

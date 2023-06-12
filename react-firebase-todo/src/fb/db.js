@@ -47,6 +47,23 @@ export const fnGetDocs = (collectionName, limitCnt,nextDoc=null) => {
         })
       })//getDocs
   }) 
-}
-//'desc' 내림차순
+} //문서 여러개 가져오겠다
+//'desc' 내림차순 
 
+export const fnGetDoc = (collectionName, docid) => {
+  return new Promise((resolve)=>{
+    const docRef = doc(db, collectionName, docid);
+    getDoc(docRef).then((doc) => {
+      resolve(doc.data())
+    })
+  })
+} //문서 1개
+
+export const fnUpdateDoc = (collectionName, docid, data) => {
+  return new Promise((resolve)=>{
+    const docRef = doc(db, collectionName, docid);
+    updateDoc(docRef, data).then((doc)=>{
+      resolve(doc.id, doc.data())
+    })//updateDoc then
+  })
+} //여기서 data는 객체

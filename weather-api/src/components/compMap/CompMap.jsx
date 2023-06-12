@@ -23,6 +23,10 @@ const CompMap = () => {
     document.querySelectorAll(`.section-inner`).forEach((el)=>{
       el.scrollTo({top:0, left:0, behavior:'smooth'})
     })
+    document.querySelectorAll(`.comp-daily li .detail`).forEach((v)=>{
+      v.style.display='none'
+      v.previousElementSibling.classList.remove('active')
+    })
   }
 
   useLayoutEffect(()=>{

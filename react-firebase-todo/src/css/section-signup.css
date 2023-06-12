@@ -32,11 +32,12 @@
 .section-signup form .email-wrap input:not([type=checkbox], [type=radio]):focus, .section-signup form .email-wrap textarea:focus {
   background: #FFF;
 }
+.section-signup form .email-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signup form .email-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signup form .email-wrap textarea[type=date], .section-signup form .email-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signup form .email-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signup form .email-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signup form .email-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signup form .email-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-email.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -46,6 +47,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -123,11 +127,12 @@
 .section-signup form .password-wrap input:not([type=checkbox], [type=radio]):focus, .section-signup form .password-wrap textarea:focus {
   background: #FFF;
 }
+.section-signup form .password-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signup form .password-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signup form .password-wrap textarea[type=date], .section-signup form .password-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signup form .password-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signup form .password-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signup form .password-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signup form .password-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-key.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -137,6 +142,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -214,11 +222,12 @@
 .section-signup form .nickname-wrap input:not([type=checkbox], [type=radio]):focus, .section-signup form .nickname-wrap textarea:focus {
   background: #FFF;
 }
+.section-signup form .nickname-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signup form .nickname-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signup form .nickname-wrap textarea[type=date], .section-signup form .nickname-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signup form .nickname-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signup form .nickname-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signup form .nickname-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signup form .nickname-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-nickname.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -228,6 +237,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -305,11 +317,12 @@
 .section-signup form .photo-wrap input:not([type=checkbox], [type=radio]):focus, .section-signup form .photo-wrap textarea:focus {
   background: #FFF;
 }
+.section-signup form .photo-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signup form .photo-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signup form .photo-wrap textarea[type=date], .section-signup form .photo-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signup form .photo-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signup form .photo-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signup form .photo-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signup form .photo-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-photo.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -319,6 +332,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;
@@ -383,11 +399,12 @@
 .section-signup form .btn-wrap input:not([type=checkbox], [type=radio]):focus, .section-signup form .btn-wrap textarea:focus {
   background: #FFF;
 }
+.section-signup form .btn-wrap input:not([type=checkbox], [type=radio])[type=date], .section-signup form .btn-wrap input:not([type=checkbox], [type=radio])[type=time], .section-signup form .btn-wrap textarea[type=date], .section-signup form .btn-wrap textarea[type=time] {
+  outline: none;
+}
 .section-signup form .btn-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-signup form .btn-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-signup form .btn-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-signup form .btn-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-email.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -397,6 +414,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;

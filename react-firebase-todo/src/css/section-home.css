@@ -1,3 +1,20 @@
+.section-home .scroll-wrap {
+  position: relative;
+}
+.section-home .scroll-wrap ul li {
+  opacity: 0;
+  animation: show 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .section-home .scroll-wrap ul li:nth-child(even) {
   background: rgba(255, 255, 255, 0.3);
 }
@@ -70,6 +87,15 @@
 .section-home .scroll-wrap ul li a:hover {
   background-color: var(--beige);
 }
+.section-home .scroll-wrap img.no-list {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.section-home .scroll-wrap .scroll-trigger {
+  height: 50px;
+}
 .section-home p.add-btn-wrap {
   position: relative;
   margin: 10px 0;
@@ -88,11 +114,12 @@
 .section-home p.add-btn-wrap input:not([type=checkbox], [type=radio]):focus, .section-home p.add-btn-wrap textarea:focus {
   background: #FFF;
 }
+.section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=date], .section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=time], .section-home p.add-btn-wrap textarea[type=date], .section-home p.add-btn-wrap textarea[type=time] {
+  outline: none;
+}
 .section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=date]::-webkit-calendar-picker-indicator, .section-home p.add-btn-wrap input:not([type=checkbox], [type=radio])[type=time]::-webkit-calendar-picker-indicator, .section-home p.add-btn-wrap textarea[type=date]::-webkit-calendar-picker-indicator, .section-home p.add-btn-wrap textarea[type=time]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
-  border: 1px dotted var(--orange);
   background-image: url(../assets/img/icons/icon-email.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -102,6 +129,9 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background: var(--beige);
   border: 1px dotted var(--orange);
   color: #ffc876;

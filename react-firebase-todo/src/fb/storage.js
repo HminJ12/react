@@ -16,6 +16,15 @@ export const fnUploadFile = (uid, file) => {
   })
 }
 
+export const fnDeleteObject = (path) => {
+  return new Promise((resolve)=>{
+    const storageRef= ref(storage, path);
+    deleteObject(storageRef).then(() => {
+      resolve()
+    })
+  })
+}
+
 export const fnDeleteFolder = (folderName) => {
   return new Promise((resolve)=>{
     const folderRef = ref(storage, folderName);
