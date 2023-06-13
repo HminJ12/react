@@ -41,7 +41,7 @@
   width: 100%;
 }
 
-.list-loader {
+.list-loader, .detail-loader {
   position: absolute;
   top: 0;
   left: 0;
@@ -49,7 +49,7 @@
   height: 100%;
   mix-blend-mode: multiply;
 }
-.list-loader img {
+.list-loader img, .detail-loader img {
   width: 50%;
   position: absolute;
   left: 50%;

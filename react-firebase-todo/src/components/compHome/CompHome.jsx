@@ -6,13 +6,13 @@ import CompListLoader from '../compLoader/CompListLoader';
 
 
 const CompHome = () => {
-  const {_docsArr} = useContext(AppContext)
+  const {_isPending} = useContext(AppContext)
   return (
     <section className='section-home'>
       {
-        _docsArr
-          ? <CompHomeOutput/>
-          : <CompListLoader/>
+        _isPending
+          ? <CompListLoader/> //대기중일 때 대기화면
+          : <CompHomeOutput/>
       }
     </section>
   );

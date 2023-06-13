@@ -3,14 +3,15 @@ export const storage = getStorage();
 
 export const fnUploadFile = (uid, file) => {
   return new Promise((resolve)=>{
-    const storageRef = ref(storage, `${uid}/${Date.now()}-${file.name}`);
+    const path = `${uid}/${Date.now()}-${file.name}`
+    const storageRef = ref(storage, path); //업로드하는 시간
     uploadBytes(storageRef,file).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((outputUrl)=>{
         resolve({
           outputUrl: outputUrl,
-          storageUrl: `${uid}/${Date.now()}-${file.name}`,
+          storageUrl: path,
           orgUrl: file.name,
-        }) //resolve
+        }) //resolve, then은 업로드 완료된 시간
       })
     })
   })
@@ -23,7 +24,7 @@ export const fnDeleteObject = (path) => {
       resolve()
     })
   })
-}
+} //파일 지우기
 
 export const fnDeleteFolder = (folderName) => {
   return new Promise((resolve)=>{

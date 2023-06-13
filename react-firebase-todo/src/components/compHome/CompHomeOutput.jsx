@@ -31,6 +31,10 @@ const CompHomeOutput = () => {
       }
     }) //옵저버로 할 일, 1개일 때 배열로 받고 아니면 forEach로 해야 한다
     observer.observe(refScrollTrigger.current) //관찰하겠다
+
+    return(()=>{
+      observer.disconnect() //옵저버 제거, 오류가 발생할 수 있기 때문에 권장사항
+    })
   },[])
 
   return (

@@ -26,29 +26,47 @@ function App() {
   const [_docsArr, _setDocsArr] = useState(null) //처음에는 null을 넣는다
   const [_docsOutputArr, _setDocsOutputArr] = useState(null)
   const [_nextDoc, _setNextDoc] = useState(null)
+  const [_isPending, _setIsPending] = useState(true) //보류하는 거
   const navi = useNavigate()
 
-  useEffect(()=>{
-    let init = true //변수를 사용해야 한다
-    onAuthStateChanged(auth, (user) => {
-      if (user && auth.currentUser.emailVerified) {
+  const fnGetDocsHandler = async () => {
+    _setIsPending(true)
+    const { docsArr, nextDoc } = await fnGetDocs(auth.currentUser.uid, 5) //목록을 새로 만들거나 삭제할 때 목록 5개만 나오게 하겠다 스크롤바가 생길 정도로 만들어야 한다
+    const docsCnt = await fnGetDocsCnt(auth.currentUser.uid) //순서, onSnapshot 안쪽에서는 캐싱이 되는 걸로 추측됨
+    _setDocsCnt(docsCnt); _setDocsArr(docsArr); _setDocsOutputArr(docsArr); _setNextDoc(nextDoc)
+    _setIsPending(false)
+  }
+
+  useEffect(() => {
+
+    //로그인 상태가 변할 때마다 할 일
+    onAuthStateChanged(auth, () => {
+      if (auth.currentUser && (auth.currentUser.emailVerified || auth.currentUser.email === 'guest@mail.com')) { //로그인 상태라면
         _setIsLogged(true)
-        onSnapshot(collection(db, auth.currentUser.uid), async () => {
-          const docsCnt = await fnGetDocsCnt(auth.currentUser.uid)
-          const {docsArr, nextDoc} = await fnGetDocs(auth.currentUser.uid, 5) //목록을 새로 만들거나 삭제할 때 목록 5개만 나오게 하겠다 스크롤바가 생길 정도로 만들어야 한다
-          _setDocsCnt(docsCnt); _setDocsArr(docsArr); _setDocsOutputArr(docsArr); _setNextDoc(nextDoc)
-        })
         navi('/')
-      } else {
+        //앱이 시작했을 때
+        fnGetDocsHandler()
+
+        //데이터 베이스가 변할 때마다 할 일
+        onSnapshot(collection(db, auth.currentUser.uid), (snapshot) => {
+          snapshot.docChanges().forEach(async (change) => {
+            if (change.type === "added" || change.type === "removed") {
+              fnGetDocsHandler()
+            }
+          })
+        })
+      } else { //로그아웃 상태라면
         _setIsLogged(false)
         navi('/signin')
       }
-      if(init){
+
+      let init = true //변수를 사용해야 한다
+      if (init) { //처음 접속했을 경우
         init = false //처음에만 로그인이 등록이 된 순간만 동작해라
         _setFadeOut(true) //모달은 사라진다
       }
     }) //변화가 감지될 때마다 
-  },[]) //이벤트는 한번만, 변하는 state는 절대로 useEffect안에서 사용하면 안 된다, 변수로 사용해야 한다
+  }, []) //이벤트는 한번만, 변하는 state는 절대로 useEffect안에서 사용하면 안 된다, 변수로 사용해야 한다
 
   return (
     <AppContext.Provider value={{
@@ -59,6 +77,7 @@ function App() {
       _docsArr, _setDocsArr,
       _docsOutputArr, _setDocsOutputArr,
       _nextDoc, _setNextDoc,
+      _isPending, _setIsPending,
     }}>
       <main>
         <img className="main-bg" src={require('./assets/img/common/main-bg.png')} alt="" />
@@ -72,12 +91,12 @@ function App() {
             <Route path="/signin" element={<CompSignin />} />
             <Route path="/signup" element={<CompSignup />} />
             <Route path="/add" element={<CompAdd />} />
-            <Route path="/detail/:id" element={<CompDetail />} />
+            <Route path="/detail/:docid" element={<CompDetail />} />
             <Route path="*" element={<Comp404 />} />
           </Routes>
         </article>
       </main>
-      {(_showLoader)&&<CompLoader />}
+      {(_showLoader) && <CompLoader />}
     </AppContext.Provider>
   );
 }
