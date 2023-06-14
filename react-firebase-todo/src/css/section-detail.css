@@ -513,28 +513,4 @@
   100% {
     transform: scale3d(1, 1, 1);
   }
-}
-.section-detail .btn-wrap {
-  text-align: center;
-}
-.section-detail .btn-wrap button, .section-detail .btn-wrap a {
-  vertical-align: middle;
-  margin: 0 5px;
-}
-.section-detail .btn-wrap button {
-  width: 37%;
-  max-width: 150px;
-}
-.section-detail .btn-wrap button:active {
-  animation: rubberBand 0.3s;
-}
-.section-detail .btn-wrap button img {
-  width: 100%;
-}
-.section-detail .btn-wrap a {
-  display: inline-block;
-  width: 13%;
-}
-.section-detail .btn-wrap a img {
-  width: 100%;
 }/*# sourceMappingURL=section-detail.css.map */

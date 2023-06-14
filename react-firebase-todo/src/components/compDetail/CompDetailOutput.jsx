@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { fnDeleteObject, fnUploadFile } from '../../fb/storage';
-import { fnDeleteDoc, fnUpdateDoc } from '../../fb/db';
+import { fnUpdateDoc } from '../../fb/db';
 import { auth } from '../../fb/auth';
 import { AppContext } from '../../App';
 
@@ -9,7 +9,7 @@ import { AppContext } from '../../App';
 
 const CompDetailOutput = ({docData, docid}) => {
   let {date, desc, time, title, orgUrl, outputUrl, storageUrl} = docData
-  const {_setShowLoader, _setFadeOut,} = useContext(AppContext)
+  const {_setShowLoader, _setFadeOut, fnGetDocsHandler, _loadedCnt,} = useContext(AppContext)
   const [_date, _setDate] = useState(date)
   const [_desc, _setDesc] = useState(desc)
   const [_time, _setTime] = useState(time)
@@ -20,19 +20,7 @@ const CompDetailOutput = ({docData, docid}) => {
 
   const navi = useNavigate()
 
-  const fnDeleteHandler = async () => {
-    if(auth.currentUser.email === 'guest@mail.com'){
-      alert('게스트 회원님은 삭제 권한이 부여되지 않았습니다')
-      return false
-    }
 
-    _setShowLoader(true)
-    storageUrl && await fnDeleteObject(storageUrl) //이미지를 먼저 지운다
-    await fnDeleteDoc(auth.currentUser.uid, docid)
-    alert('일정을 삭제했습니다\n일정목록으로 이동합니다')
-    navi('/')
-    _setFadeOut(true)
-  }
 
   const fnUpdateDocHandler = async () => {
 
@@ -66,6 +54,7 @@ const CompDetailOutput = ({docData, docid}) => {
       storageUrl, //storageUrl: storageUrl
     } //수정해서 덮으려고
     await fnUpdateDoc(auth.currentUser.uid, docid, data)
+    fnGetDocsHandler(_loadedCnt)
     alert('일정이 수정되었습니다\n일정목록으로 이동합니다')
     navi('/')
   } 
@@ -115,9 +104,8 @@ const CompDetailOutput = ({docData, docid}) => {
       </form>
 
       <p className='btn-wrap'>
-        <button onClick={fnUpdateDocHandler}><img src={require('../../assets/img/detail/btn-update-list.png')} alt="" /></button>
-        <button onClick={fnDeleteHandler}><img src={require('../../assets/img/detail/btn-delete-list.png')} alt="" /></button>
-        <Link to='/'><img src={require('../../assets/img/detail/btn-goto-list.png')} alt="" /></Link>
+        <button onClick={fnUpdateDocHandler}><img src={require('../../assets/img/detail/btn-edit-list.png')} alt="" /></button>
+        <Link to='/'><img src={require('../../assets/img/detail/btn-backto-list.png')} alt="" /></Link>
       </p>
     </>
   );

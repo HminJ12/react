@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import fb from "./fb/config";
 import { auth } from "./fb/auth";
 
@@ -23,19 +23,25 @@ function App() {
   const [_showLoader, _setShowLoader] = useState(true) //true 보여주겠다
   const [_fadeOut, _setFadeOut] = useState(false)
   const [_docsCnt, _setDocsCnt] = useState(0)
+  const [_loadedCnt, _setLoadedCnt] = useState(0)
   const [_docsArr, _setDocsArr] = useState(null) //처음에는 null을 넣는다
   const [_docsOutputArr, _setDocsOutputArr] = useState(null)
   const [_nextDoc, _setNextDoc] = useState(null)
   const [_isPending, _setIsPending] = useState(true) //보류하는 거
+  const [_scrollTop, _setScrollTop] = useState(0)
   const navi = useNavigate()
 
-  const fnGetDocsHandler = async () => {
-    _setIsPending(true)
-    const { docsArr, nextDoc } = await fnGetDocs(auth.currentUser.uid, 5) //목록을 새로 만들거나 삭제할 때 목록 5개만 나오게 하겠다 스크롤바가 생길 정도로 만들어야 한다
-    const docsCnt = await fnGetDocsCnt(auth.currentUser.uid) //순서, onSnapshot 안쪽에서는 캐싱이 되는 걸로 추측됨
-    _setDocsCnt(docsCnt); _setDocsArr(docsArr); _setDocsOutputArr(docsArr); _setNextDoc(nextDoc)
-    _setIsPending(false)
-  }
+  const fnGetDocsHandler = useCallback( //highorder function
+    async (cnt) => {
+      _setIsPending(true)
+      const { docsArr, nextDoc } = await fnGetDocs(auth.currentUser.uid, cnt) //목록을 새로 만들거나 삭제할 때 목록 5개만 나오게 하겠다 스크롤바가 생길 정도로 만들어야 한다
+      const docsCnt = await fnGetDocsCnt(auth.currentUser.uid) //순서, onSnapshot 안쪽에서는 캐싱이 되는 걸로 추측됨
+      _setDocsCnt(docsCnt); _setDocsArr(docsArr); _setDocsOutputArr(docsArr); _setNextDoc(nextDoc);
+      _setLoadedCnt(cnt)
+      _setIsPending(false)
+    }
+  ,[])
+
 
   useEffect(() => {
 
@@ -44,14 +50,16 @@ function App() {
       if (auth.currentUser && (auth.currentUser.emailVerified || auth.currentUser.email === 'guest@mail.com')) { //로그인 상태라면
         _setIsLogged(true)
         navi('/')
-        //앱이 시작했을 때
-        fnGetDocsHandler()
 
-        //데이터 베이스가 변할 때마다 할 일
+        //앱이 시작했을 때 문서를 가져온다
+        fnGetDocsHandler(5)
+
+        //데이터 베이스가 변할 때마다 할 일(문서를 가져온다)
         onSnapshot(collection(db, auth.currentUser.uid), (snapshot) => {
           snapshot.docChanges().forEach(async (change) => {
-            if (change.type === "added" || change.type === "removed") {
-              fnGetDocsHandler()
+            if (change.type === "added" || change.type === "removed") { //문서를 추가하거나 삭제했을 때
+              _setScrollTop(0)
+              fnGetDocsHandler(5) //문서목록을 불러온다
             }
           })
         })
@@ -78,6 +86,9 @@ function App() {
       _docsOutputArr, _setDocsOutputArr,
       _nextDoc, _setNextDoc,
       _isPending, _setIsPending,
+      _loadedCnt, _setLoadedCnt,
+      _scrollTop, _setScrollTop,
+      fnGetDocsHandler,
     }}>
       <main>
         <img className="main-bg" src={require('./assets/img/common/main-bg.png')} alt="" />

@@ -43,19 +43,5 @@
 
   } //form
 
-  .btn-wrap{
-    text-align: center;
-    button, a{
-      display: inline-block;
-      width: 45%;
-      max-width: 200px;
-      &:active{
-        animation: rubberBand 0.3s;
-      }
-      img{
-        max-width: 100%;
-        object-fit: contain;
-      }
-    }
-  } //btn-wrap
+  
 } //section-add

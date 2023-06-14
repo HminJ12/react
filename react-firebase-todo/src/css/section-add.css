@@ -479,19 +479,4 @@
   100% {
     transform: scale3d(1, 1, 1);
   }
-}
-.section-add .btn-wrap {
-  text-align: center;
-}
-.section-add .btn-wrap button, .section-add .btn-wrap a {
-  display: inline-block;
-  width: 45%;
-  max-width: 200px;
-}
-.section-add .btn-wrap button:active, .section-add .btn-wrap a:active {
-  animation: rubberBand 0.3s;
-}
-.section-add .btn-wrap button img, .section-add .btn-wrap a img {
-  max-width: 100%;
-  object-fit: contain;
 }/*# sourceMappingURL=section-add.css.map */

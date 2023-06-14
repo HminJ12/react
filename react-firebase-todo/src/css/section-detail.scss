@@ -78,28 +78,5 @@
     }
   } //form
 
-  .btn-wrap{
-    text-align: center;
-    button, a{
-      vertical-align: middle;
-      margin: 0 5px;
-    }
-    button{
-      width: 37%;
-      max-width: 150px;
-      &:active{
-        animation: rubberBand 0.3s;
-      }
-      img{
-        width: 100%;
-      }
-    }
-    a{
-      display: inline-block;
-      width: 13%;
-      img{
-        width: 100%;
-      }
-    }
-  } //btn-wrap
+
 }
