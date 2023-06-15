@@ -17,13 +17,12 @@ const CompAdd = () => {
   const navi = useNavigate()
   
   const fnAddDocHandler = async () => {
-
-    /*    
+  
       if(auth.currentUser.email === 'guest@mail.com'){
       alert('게스트 회원님은 쓰기 권한이 부여되지 않았습니다')
       return false
       } 
-    나중에 다시 풀기*/
+  
 
     if(!_validity){
       alert('시간, 날짜, 일정명은 필수 입력항목입니다')
@@ -80,7 +79,7 @@ const CompAdd = () => {
         <p className='photo-wrap'>
           <input onChange={(e)=>{
             _setFile(e.target.files[0]);
-            (e.target.files[0]) && _setFileLabel(e.target.files[0].name) //e.target.files[0] && _setFileLabel(e.target.files[0].name) 괄호를 빼거나 위에 ;을 찍어야 한다
+            (e.target.files[0]) ? _setFileLabel(e.target.files[0].name) : _setFileLabel('일정 이미지를 업로드하세요') //e.target.files[0] && _setFileLabel(e.target.files[0].name) 괄호를 빼거나 위에 ;을 찍어야 한다
           }} id='file' type="file" className='hidden'/>
           <label htmlFor="file">{_fileLabel}</label>
         </p>

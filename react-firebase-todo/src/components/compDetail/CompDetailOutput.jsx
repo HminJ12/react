@@ -97,7 +97,7 @@ const CompDetailOutput = ({docData, docid}) => {
         <p className='photo-wrap'>
           <input onChange={e => {
             _setFile(e.target.files[0]);
-            (e.target.files[0]) && _setFileLabel(e.target.files[0].name)
+            (e.target.files[0]) ? _setFileLabel(e.target.files[0].name) : _setFileLabel('일정 이미지를 업로드하세요')
           }} id='file' type="file" className='hidden' accept='image/*' />
           <label htmlFor="file">{_fileLabel}</label>
         </p>

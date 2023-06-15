@@ -14,8 +14,14 @@ import CompSignup from "./components/compSignup/CompSignup";
 import CompAdd from "./components/compAdd/CompAdd";
 import CompDetail from "./components/compDetail/CompDetail";
 import CompLoader from "./components/compLoader/CompLoader";
+import CompCoatch from "./components/compLoader/CompCoatch";
+
+const fnCoatchShow = () => {
+  return (window.localStorage.getItem('coatchExpires'))? false : true
+}
 
 export const AppContext = createContext()
+
 
 function App() {
   const [_init, _setInit] = useState(true) //초기화
@@ -29,6 +35,7 @@ function App() {
   const [_nextDoc, _setNextDoc] = useState(null)
   const [_isPending, _setIsPending] = useState(true) //보류하는 거
   const [_scrollTop, _setScrollTop] = useState(0)
+  const [_coatchShow, _setCoatchShow] = useState(fnCoatchShow())
   const navi = useNavigate()
 
   const fnGetDocsHandler = useCallback( //highorder function
@@ -44,7 +51,7 @@ function App() {
 
 
   useEffect(() => {
-
+    let init = true //변수를 사용해야 한다
     //로그인 상태가 변할 때마다 할 일
     onAuthStateChanged(auth, () => {
       if (auth.currentUser && (auth.currentUser.emailVerified || auth.currentUser.email === 'guest@mail.com')) { //로그인 상태라면
@@ -68,12 +75,22 @@ function App() {
         navi('/signin')
       }
 
-      let init = true //변수를 사용해야 한다
+      
       if (init) { //처음 접속했을 경우
-        init = false //처음에만 로그인이 등록이 된 순간만 동작해라
         _setFadeOut(true) //모달은 사라진다
+        init = false //처음에만 로그인이 등록이 된 순간만 동작해라
       }
     }) //변화가 감지될 때마다 
+
+
+    if(window.localStorage.getItem('coatchExpires')){
+      const expires = parseInt(window.localStorage.getItem('coatchExpires'))
+      if(Date.now() > expires){
+        _setCoatchShow(true)
+        window.localStorage.removeItem('coatchExpires')
+      }
+    }
+
   }, []) //이벤트는 한번만, 변하는 state는 절대로 useEffect안에서 사용하면 안 된다, 변수로 사용해야 한다
 
   return (
@@ -89,6 +106,7 @@ function App() {
       _loadedCnt, _setLoadedCnt,
       _scrollTop, _setScrollTop,
       fnGetDocsHandler,
+      _coatchShow, _setCoatchShow,
     }}>
       <main>
         <img className="main-bg" src={require('./assets/img/common/main-bg.png')} alt="" />
@@ -108,6 +126,7 @@ function App() {
         </article>
       </main>
       {(_showLoader) && <CompLoader />}
+      {_coatchShow && <CompCoatch/>}
     </AppContext.Provider>
   );
 }

@@ -119,17 +119,17 @@ body {
 #root main article section .btn-wrap button, #root main article section .btn-wrap a {
   display: inline-block;
   width: 45%;
-  max-width: 200px;
+  max-width: 180px;
 }
 #root main article section .btn-wrap button:active, #root main article section .btn-wrap a:active {
   animation: rubberBand 0.3s;
 }
 #root main article section .btn-wrap button img, #root main article section .btn-wrap a img {
-  max-width: 100%;
+  width: 100%;
   object-fit: contain;
 }
 #root footer {
-  position: fixed;
+  position: absolute;
   left: 50%;
   bottom: 10px;
   transform: translate(-50%, 0);

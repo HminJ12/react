@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState, useTransition } from 'react';
 import CompItem from './CompItem';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../App';
@@ -21,6 +21,10 @@ const CompHomeOutput = () => {
   const refScrollTrigger = useRef()
   const scrollWrap = useRef()
   const refInput = useRef()
+  const [isWaiting, startTransition] = useTransition() //최적화 방법
+  let isSearchRef = useRef(false)
+  
+
 
   const fnScrollHandler = (e) => {
     //$(window).scrollTop() -> window.scrollY
@@ -29,22 +33,27 @@ const CompHomeOutput = () => {
 
   const fnSearchHandler = (e) => {
     _setKeyword(e.target.value);
-    _setDocsOutputArr(_docsArr.filter(v=>v.data().title.includes(e.target.value)))
+    startTransition(()=>{
+      _setDocsOutputArr(_docsArr.filter(v=>v.data().title.includes(e.target.value)))
+    }) //행동을 늦춘다 (만개, 2만개 정도 됐을 때)
   }
 
   const fnSubmitHandler = (e) => {
     e.preventDefault()
+    isSearchRef.current = false
     _setIsActive(false)
     _setKeyword('')
     _setDocsOutputArr([..._docsArr])
   }
 
   const fnSearchBtnClickHandler = () => {
-    _setKeyword('')
-    refInput.current.focus()
-    _setDocsOutputArr([..._docsArr])
-    _setIsActive(c => !c)
+    _setKeyword('') //검색 양식의 내용을 지운다
+    isSearchRef.current = !isSearchRef.current //무한스크롤을 활성화하거나 비활성화한다
+    refInput.current.focus() //검색 양식에 커서를 위치시킨다
+    _setDocsOutputArr([..._docsArr]) //목록을 원래대로 돌린다
+    _setIsActive(c => !c) //검색창을 보여주거나 숨긴다
   }
+
 
   useEffect(()=>{
     scrollWrap.current.scrollTo({
@@ -56,7 +65,7 @@ const CompHomeOutput = () => {
     let nextDocRef = _nextDoc
     
     const observer = new IntersectionObserver(async ([entries])=>{
-      if(entries.intersectionRatio > 0 && _docsCnt > docArrRef.length){ //꼬리가 화면에 들어오는 그 순간
+      if(entries.intersectionRatio > 0 && _docsCnt > docArrRef.length && !isSearchRef.current){ //꼬리가 화면에 들어오는 그 순간
         /* document.querySelector('.list-container').insertAdjacentHTML('beforeend','<li>추가된 li<br><br></li>') */
         const {docsArr, nextDoc} = await fnGetDocs(auth.currentUser.uid, 2, nextDocRef)
         docArrRef = [...docArrRef, ...docsArr] //docArrRef + docsArr
@@ -79,7 +88,8 @@ const CompHomeOutput = () => {
       <h2><img src={require('../../assets/img/list/title-list.png')} alt="" /></h2>
 
       <div ref={scrollWrap} onScroll={fnScrollHandler} className="scroll-wrap">
-        {
+
+        { 
           _docsOutputArr.length 
             ?
             <ul className='list-container'>
@@ -90,6 +100,7 @@ const CompHomeOutput = () => {
             :
             <img className='no-list' src={require('../../assets/img/list/alert-no-list.png')} alt="" />
         }
+
         <div ref={refScrollTrigger} className="scroll-trigger"></div>
       </div>
 
